@@ -178,6 +178,10 @@ export function renderRichText(richTextArray) {
 
 export function renderBlockToHtml(block) {
   const type = block.type;
+  // Bỏ qua các khối Toggle (bộ Social Media Kit chỉ dành cho Admin trong Notion)
+  if (type === 'toggle') {
+    return '';
+  }
   switch (type) {
     case 'paragraph':
       const pText = renderRichText(block.paragraph?.rich_text);
