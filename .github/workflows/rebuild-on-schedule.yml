@@ -1,0 +1,20 @@
+name: Auto Rebuild & Notion Sync
+
+on:
+  schedule:
+    # Chạy mỗi 2 tiếng để tự động cập nhật bài viết mới từ Notion
+    - cron: '0 */2 * * *'
+  workflow_dispatch: # Cho phép bấm nút "Run workflow" bằng tay trên GitHub
+
+jobs:
+  trigger-cloudflare-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Cloudflare Deploy Hook
+        if: env.CLOUDFLARE_DEPLOY_HOOK != ''
+        env:
+          CLOUDFLARE_DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          echo "Triggering Cloudflare Pages rebuild..."
+          curl -X POST "$CLOUDFLARE_DEPLOY_HOOK"
+          echo "Rebuild signal sent successfully!"
