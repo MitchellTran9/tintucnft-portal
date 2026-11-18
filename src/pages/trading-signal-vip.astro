@@ -598,10 +598,10 @@ import Layout from '../layouts/Layout.astro';
         fetchLiveCryptoPrices();
         setInterval(fetchLiveCryptoPrices, 4000);
 
-        // 📡 LIVE REALTIME SIGNALS FETCHER (/api/signals)
+        // 📡 LIVE REALTIME SIGNALS FETCHER (https://signal.smarttrader.vip/api/signals)
         async function fetchLiveSignals() {
             try {
-                const res = await fetch('/api/signals');
+                const res = await fetch('https://signal.smarttrader.vip/api/signals');
                 if (!res.ok) return;
                 const data = await res.json();
 
