@@ -1,0 +1,950 @@
+// Danh mục 84 sản phẩm bản quyền Kho MMO & AI
+// Tích hợp trực tiếp tới Telegram Bot: https://t.me/chatgpsplusbot
+
+export const categories = [
+  { id: "all", name: "Tất Cả Sản Phẩm", count: 84 },
+  { id: "ai_chat", name: "Trợ Lý & Siêu AI", count: 10, icon: "fa-brain" },
+  { id: "ai_code", name: "Lập Trình & Cloud AI", count: 7, icon: "fa-code" },
+  { id: "ai_media", name: "Video, Voice & Đồ Họa AI", count: 21, icon: "fa-wand-magic-sparkles" },
+  { id: "mmo_infra", name: "Hạ Tầng MMO & VPN Sạch", count: 12, icon: "fa-shield-halved" },
+  { id: "digital_acc", name: "Tài Khoản Số & Giải Trí", count: 23, icon: "fa-gem" },
+  { id: "edu_office", name: "Bản Quyền & Học Tập", count: 11, icon: "fa-graduation-cap" }
+];
+
+export const products = [
+  // 1. Trợ Lý & Siêu AI (10)
+  {
+    id: "chatgpt",
+    name: "ChatGPT Plus / Team",
+    category: "ai_chat",
+    tag: "Bestseller",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "Mở khóa GPT-4o, o1 reasoning, Canvas, phân tích dữ liệu chuyên sâu và tạo hình ảnh DALL-E 3 không giới hạn.",
+    icon: "fa-robot",
+    color: "#10b981",
+    botCmd: "chatgpt"
+  },
+  {
+    id: "claude",
+    name: "Claude Pro / Team",
+    category: "ai_chat",
+    tag: "Top Rated",
+    tagColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+    desc: "Đỉnh cao tư duy logic và lập trình với Claude 3.5 Sonnet & Opus, ngữ cảnh 200k tokens siêu dài.",
+    icon: "fa-brain",
+    color: "#f59e0b",
+    botCmd: "claude"
+  },
+  {
+    id: "grok",
+    name: "xAI Grok 2 / Premium",
+    category: "ai_chat",
+    tag: "Hot Trend",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Siêu AI của Elon Musk kết nối trực tiếp dữ liệu thời gian thực từ nền tảng X, sinh ảnh Flux chân thực.",
+    icon: "fa-bolt",
+    color: "#3b82f6",
+    botCmd: "grok"
+  },
+  {
+    id: "perplexity",
+    name: "Perplexity Pro",
+    category: "ai_chat",
+    tag: "Khuyên Dùng",
+    tagColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+    desc: "Công cụ tìm kiếm AI thông minh số 1, trích dẫn nguồn uy tín và hỗ trợ các mô hình AI cao cấp nhất.",
+    icon: "fa-magnifying-glass-chart",
+    color: "#06b6d4",
+    botCmd: "perplexity"
+  },
+  {
+    id: "deepseek",
+    name: "DeepSeek R1 / V3",
+    category: "ai_chat",
+    tag: "Reasoning AI",
+    tagColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+    desc: "Mô hình suy luận toán học và thuật toán cực mạnh, tối ưu chi phí cực thấp cho dân kỹ thuật & trader.",
+    icon: "fa-microchip",
+    color: "#6366f1",
+    botCmd: "deepseek"
+  },
+  {
+    id: "kimi",
+    name: "Kimi AI Moonshot",
+    category: "ai_chat",
+    tag: "Long Context",
+    tagColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    desc: "Xử lý văn bản siêu dài hàng triệu từ, đọc tài liệu tài chính, sách và hợp đồng trong tích tắc.",
+    icon: "fa-file-lines",
+    color: "#a855f7",
+    botCmd: "kimi"
+  },
+  {
+    id: "qwen",
+    name: "Qwen AI (Alibaba)",
+    category: "ai_chat",
+    tag: "Multilingual",
+    tagColor: "bg-teal-500/10 text-teal-400 border-teal-500/20",
+    desc: "Mô hình AI đa ngôn ngữ hàng đầu châu Á, hỗ trợ dịch thuật, thương mại điện tử và lập trình chuẩn xác.",
+    icon: "fa-network-wired",
+    color: "#14b8a6",
+    botCmd: "qwen"
+  },
+  {
+    id: "genspark",
+    name: "GenSpark AI Pro",
+    category: "ai_chat",
+    tag: "AI Sparkpage",
+    tagColor: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+    desc: "Tạo trang tổng hợp thông tin tương tác đa chiều, nghiên cứu thị trường tự động hóa không quảng cáo.",
+    icon: "fa-sparkles",
+    color: "#f43f5e",
+    botCmd: "genspark"
+  },
+  {
+    id: "manus",
+    name: "Manus AI Agent",
+    category: "ai_chat",
+    tag: "Autonomous",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "AI Agent tự hành thế hệ mới, tự động lên kế hoạch, duyệt web và giải quyết bài toán phức tạp từ A-Z.",
+    icon: "fa-user-gear",
+    color: "#10b981",
+    botCmd: "manus"
+  },
+  {
+    id: "antigravity",
+    name: "Antigravity AI",
+    category: "ai_chat",
+    tag: "VIP Access",
+    tagColor: "bg-sky-500/10 text-sky-400 border-sky-500/20",
+    desc: "Nền tảng trí tuệ nhân tạo chuyên biệt cho phân tích dữ liệu, tự động hóa quy trình và nghiên cứu sâu.",
+    icon: "fa-rocket",
+    color: "#0ea5e9",
+    botCmd: "antigravity"
+  },
+
+  // 2. Lập Trình & Cloud AI (7)
+  {
+    id: "cursor",
+    name: "Cursor Pro AI",
+    category: "ai_code",
+    tag: "Top 1 Coder",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "IDE lập trình AI đỉnh nhất hiện nay, tự động viết code, fix bug toàn bộ dự án với Claude 3.5 Sonnet.",
+    icon: "fa-terminal",
+    color: "#10b981",
+    botCmd: "cursor"
+  },
+  {
+    id: "replit",
+    name: "Replit Core / Agent",
+    category: "ai_code",
+    tag: "Cloud Dev",
+    tagColor: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+    desc: "Môi trường code đám mây không cần cài đặt, tích hợp Replit Agent tự build và deploy fullstack app.",
+    icon: "fa-cloud-code",
+    color: "#f97316",
+    botCmd: "replit"
+  },
+  {
+    id: "jetbrains",
+    name: "JetBrains All Products Pack",
+    category: "ai_code",
+    tag: "Full License",
+    tagColor: "bg-pink-500/10 text-pink-400 border-pink-500/20",
+    desc: "Trọn bộ IDE bản quyền chính hãng: IntelliJ IDEA, PyCharm, WebStorm, PhpStorm, Rider, CLion.",
+    icon: "fa-laptop-code",
+    color: "#ec4899",
+    botCmd: "jetbrains"
+  },
+  {
+    id: "lovable",
+    name: "Lovable AI Dev",
+    category: "ai_code",
+    tag: "No-Code / AI",
+    tagColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    desc: "Biến ý tưởng thành sản phẩm web hoàn chỉnh trong vài phút, tự động gen backend và giao diện UI đẹp mắt.",
+    icon: "fa-wand-magic",
+    color: "#a855f7",
+    botCmd: "lovable"
+  },
+  {
+    id: "railway",
+    name: "Railway Cloud Deploy",
+    category: "ai_code",
+    tag: "High Uptime",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Hạ tầng Cloud PaaS siêu tốc cho bot Telegram, EA trading backend, API server và database 24/7.",
+    icon: "fa-server",
+    color: "#3b82f6",
+    botCmd: "railway"
+  },
+  {
+    id: "zed",
+    name: "Zed AI Editor",
+    category: "ai_code",
+    tag: "Ultra Fast",
+    tagColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+    desc: "Trình soạn thảo mã nguồn viết bằng Rust siêu nhẹ, độ trễ bằng 0, tích hợp trợ lý AI làm việc nhóm realtime.",
+    icon: "fa-keyboard",
+    color: "#f59e0b",
+    botCmd: "zed"
+  },
+  {
+    id: "notion",
+    name: "Notion Plus & Notion AI",
+    category: "ai_code",
+    tag: "Productivity",
+    tagColor: "bg-slate-500/10 text-slate-300 border-slate-500/20",
+    desc: "Không gian quản lý dự án, ghi chú tài liệu và CMS website kết hợp trợ lý Notion AI viết lách tự động.",
+    icon: "fa-note-sticky",
+    color: "#94a3b8",
+    botCmd: "notion"
+  },
+
+  // 3. Video, Voice & Đồ Họa AI (21)
+  {
+    id: "elevenlabs",
+    name: "ElevenLabs Creator / Pro",
+    category: "ai_media",
+    tag: "Bestseller Voice",
+    tagColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+    desc: "Lồng tiếng AI chân thực số 1 thế giới, voice cloning chuẩn từng cảm xúc để làm kênh YouTube, TikTok triệu view.",
+    icon: "fa-microphone-lines",
+    color: "#06b6d4",
+    botCmd: "elevenlabs"
+  },
+  {
+    id: "suno",
+    name: "Suno AI Pro / Premier",
+    category: "ai_media",
+    tag: "AI Music",
+    tagColor: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+    desc: "Sáng tác bài hát và bản nhạc hoàn chỉnh chuẩn chất lượng phòng thu từ văn bản, sở hữu full bản quyền thương mại.",
+    icon: "fa-music",
+    color: "#f97316",
+    botCmd: "suno"
+  },
+  {
+    id: "runway",
+    name: "Runway Gen-2 / Gen-3 Alpha",
+    category: "ai_media",
+    tag: "Top 1 Video AI",
+    tagColor: "bg-violet-500/10 text-violet-400 border-violet-500/20",
+    desc: "Nền tảng tạo video AI điện ảnh Hollywood, biến văn bản và hình ảnh thành cảnh quay sống động độ phân giải cao.",
+    icon: "fa-film",
+    color: "#8b5cf6",
+    botCmd: "runway"
+  },
+  {
+    id: "kling",
+    name: "Kling AI Video Pro",
+    category: "ai_media",
+    tag: "Cinematic",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "Tạo chuyển động vật lý cực kỳ mượt mà, render video AI dài đến 2 phút chuẩn xác từng chi tiết nhân vật.",
+    icon: "fa-video",
+    color: "#10b981",
+    botCmd: "kling"
+  },
+  {
+    id: "higgfield",
+    name: "Higgfield AI",
+    category: "ai_media",
+    tag: "Social Video",
+    tagColor: "bg-lime-500/10 text-lime-400 border-lime-500/20",
+    desc: "Tạo nhân vật ảo cá nhân hóa và video ngắn viral cho TikTok, Instagram Reels với góc máy độc đáo.",
+    icon: "fa-camera-retro",
+    color: "#84cc16",
+    botCmd: "higgfield"
+  },
+  {
+    id: "heygen",
+    name: "HeyGen AI Avatar",
+    category: "ai_media",
+    tag: "AI Spokesperson",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Tạo người dẫn chương trình ảo tự động nói đa ngôn ngữ, khớp cử động môi 100% cho video bán hàng và marketing.",
+    icon: "fa-user-tie",
+    color: "#3b82f6",
+    botCmd: "heygen"
+  },
+  {
+    id: "museai",
+    name: "Muse AI Video",
+    category: "ai_media",
+    tag: "Cloud Video",
+    tagColor: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+    desc: "Nền tảng lưu trữ, phát trực tiếp video tốc độ cao không quảng cáo cùng công cụ tìm kiếm phụ đề AI chuẩn xác.",
+    icon: "fa-clapperboard",
+    color: "#f43f5e",
+    botCmd: "museai"
+  },
+  {
+    id: "seedance",
+    name: "Seedance AI",
+    category: "ai_media",
+    tag: "Creative",
+    tagColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    desc: "Bộ công cụ sáng tạo hoạt hình và hiệu ứng hình ảnh AI chuyển động mượt mà cho nhà sáng tạo nội dung.",
+    icon: "fa-wand-magic-sparkles",
+    color: "#a855f7",
+    botCmd: "seedance"
+  },
+  {
+    id: "openart",
+    name: "OpenArt AI",
+    category: "ai_media",
+    tag: "Prompt Master",
+    tagColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+    desc: "Kho sáng tạo hình ảnh nghệ thuật AI đa dạng phong cách, kiểm soát bố cục và màu sắc chính xác tuyệt đối.",
+    icon: "fa-palette",
+    color: "#06b6d4",
+    botCmd: "openart"
+  },
+  {
+    id: "canva",
+    name: "Canva Pro / Edu Vĩnh Viễn",
+    category: "ai_media",
+    tag: "Quốc Dân",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Mở khóa 100+ triệu hình ảnh, video cao cấp, xóa phông nền 1 chạm và công cụ Magic Studio AI trên email chính chủ.",
+    icon: "fa-paint-roller",
+    color: "#3b82f6",
+    botCmd: "canva"
+  },
+  {
+    id: "adobe",
+    name: "Adobe Creative Cloud All Apps",
+    category: "ai_media",
+    tag: "Bản Quyền Hãng",
+    tagColor: "bg-red-500/10 text-red-400 border-red-500/20",
+    desc: "Trọn bộ hơn 20 phần mềm đồ họa hàng đầu: Photoshop, Premiere, Illustrator, After Effects kèm 100GB Cloud và Firefly AI.",
+    icon: "fa-bezier-curve",
+    color: "#ef4444",
+    botCmd: "adobe"
+  },
+  {
+    id: "capcut",
+    name: "CapCut Pro PC & Mobile",
+    category: "ai_media",
+    tag: "Essential MMO",
+    tagColor: "bg-teal-500/10 text-teal-400 border-teal-500/20",
+    desc: "Mở full hiệu ứng Pro, Auto-caption tiếng Việt chuẩn xác, xuất video 4K nét căng không watermark, bảo hành full hạn.",
+    icon: "fa-scissors",
+    color: "#14b8a6",
+    botCmd: "capcut"
+  },
+  {
+    id: "figma",
+    name: "Figma Pro / Organization",
+    category: "ai_media",
+    tag: "UI/UX Design",
+    tagColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    desc: "Không giới hạn dự án thiết kế UI/UX, phiên bản lịch sử vô tận và làm việc nhóm realtime cùng FigJam.",
+    icon: "fa-pen-nib",
+    color: "#a855f7",
+    botCmd: "figma"
+  },
+  {
+    id: "freepik",
+    name: "Freepik Premium",
+    category: "ai_media",
+    tag: "Graphics Hub",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Tải không giới hạn hàng triệu vector, stock ảnh, mockups, PSD và mẫu thiết kế thương mại bản quyền sạch.",
+    icon: "fa-images",
+    color: "#3b82f6",
+    botCmd: "freepik"
+  },
+  {
+    id: "gamma",
+    name: "Gamma App Pro",
+    category: "ai_media",
+    tag: "AI Slides",
+    tagColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+    desc: "Tự động tạo Slide thuyết trình và Landing Page tuyệt đẹp chỉ từ 1 dòng prompt trong 30 giây.",
+    icon: "fa-chalkboard-user",
+    color: "#f59e0b",
+    botCmd: "gamma"
+  },
+  {
+    id: "autodesk",
+    name: "AutoDesk (AutoCAD / 3ds Max)",
+    category: "ai_media",
+    tag: "Bản Quyền 1 Năm",
+    tagColor: "bg-slate-500/10 text-slate-300 border-slate-500/20",
+    desc: "Tài khoản bản quyền sinh viên/chính ngạch cho AutoCAD, Revit, 3ds Max, Maya phục vụ thiết kế kỹ thuật kiến trúc.",
+    icon: "fa-cubes",
+    color: "#64748b",
+    botCmd: "autodesk"
+  },
+  {
+    id: "picsart",
+    name: "PicsArt Gold VIP",
+    category: "ai_media",
+    tag: "Mobile Edit",
+    tagColor: "bg-pink-500/10 text-pink-400 border-pink-500/20",
+    desc: "Mở khóa toàn bộ nhãn dán, bộ lọc nghệ thuật, xóa vật thể AI và công cụ chỉnh sửa ảnh chuyên nghiệp trên điện thoại.",
+    icon: "fa-wand-magic",
+    color: "#ec4899",
+    botCmd: "picsart"
+  },
+  {
+    id: "beautycam",
+    name: "BeautyCam VIP",
+    category: "ai_media",
+    tag: "Photo AI",
+    tagColor: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+    desc: "Trang điểm ảo, nâng cấp độ nét chân dung AI và mở khóa các bộ lọc máy ảnh phim cao cấp.",
+    icon: "fa-camera",
+    color: "#f43f5e",
+    botCmd: "beautycam"
+  },
+  {
+    id: "wink",
+    name: "Wink VIP Video Retouch",
+    category: "ai_media",
+    tag: "4K Retouch",
+    tagColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+    desc: "Phục hồi độ phân giải video mờ lên 4K sắc nét, chỉnh sửa khuôn mặt và vóc dáng nhân vật trong video chân thực.",
+    icon: "fa-eye",
+    color: "#6366f1",
+    botCmd: "wink"
+  },
+  {
+    id: "xingtu",
+    name: "Xingtu VIP (醒图)",
+    category: "ai_media",
+    tag: "Hot Douyin",
+    tagColor: "bg-lime-500/10 text-lime-400 border-lime-500/20",
+    desc: "App chỉnh ảnh đình đám của giới sáng tạo nội dung Douyin/TikTok Trung Quốc, mở khóa bộ lọc VIP độc quyền.",
+    icon: "fa-circle-half-stroke",
+    color: "#84cc16",
+    botCmd: "xingtu"
+  },
+  {
+    id: "meitu",
+    name: "Meitu VIP",
+    category: "ai_media",
+    tag: "Beauty Studio",
+    tagColor: "bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20",
+    desc: "Chỉnh sửa video và ảnh chân dung AI hoàn mỹ, biến ảnh thật thành phong cách anime độc đáo.",
+    icon: "fa-heart",
+    color: "#d946ef",
+    botCmd: "meitu"
+  },
+
+  // 4. Hạ Tầng MMO & VPN Sạch (12)
+  {
+    id: "gpm_login",
+    name: "GPM Login (Antidetect Browser)",
+    category: "mmo_infra",
+    tag: "Tặng Key Free",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "Trình duyệt Antidetect số 1 VN, tạo hàng ngàn profile độc lập chống phát hiện, quản lý dàn tài khoản sạch 100%.",
+    icon: "fa-user-secret",
+    color: "#10b981",
+    botCmd: "gpmlogin"
+  },
+  {
+    id: "proxyscrape",
+    name: "ProxyScrape (DC & Residential)",
+    category: "mmo_infra",
+    tag: "IP Sạch Chống Ban",
+    tagColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+    desc: "Hệ thống proxy dân cư và datacenter toàn cầu, độ trễ thấp, kết nối ổn định cho nuôi account và auto bot.",
+    icon: "fa-network-wired",
+    color: "#06b6d4",
+    botCmd: "proxyscrape"
+  },
+  {
+    id: "nordvpn",
+    name: "NordVPN Plus / Complete",
+    category: "mmo_infra",
+    tag: "Top 1 Bảo Mật",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Tốc độ kết nối nhanh nhất thế giới, mã hóa quân sự, vượt mọi tường lửa và chống rò rỉ DNS tuyệt đối.",
+    icon: "fa-shield",
+    color: "#3b82f6",
+    botCmd: "nordvpn"
+  },
+  {
+    id: "surfshark",
+    name: "Surfshark VPN",
+    category: "mmo_infra",
+    tag: "Không Giới Hạn Thiết Bị",
+    tagColor: "bg-teal-500/10 text-teal-400 border-teal-500/20",
+    desc: "Dùng đồng thời không giới hạn thiết bị, chặn quảng cáo CleanWeb tích hợp và tốc độ stream mượt mà.",
+    icon: "fa-water",
+    color: "#14b8a6",
+    botCmd: "surfshark"
+  },
+  {
+    id: "expressvpn",
+    name: "ExpressVPN",
+    category: "mmo_infra",
+    tag: "Siêu Tốc Độ",
+    tagColor: "bg-red-500/10 text-red-400 border-red-500/20",
+    desc: "Máy chủ siêu tốc tại 105 quốc gia, giao thức Lightway độc quyền tối ưu độ trễ cho giao dịch và cày view.",
+    icon: "fa-gauge-high",
+    color: "#ef4444",
+    botCmd: "expressvpn"
+  },
+  {
+    id: "proton",
+    name: "Proton Unlimited (VPN & Mail)",
+    category: "mmo_infra",
+    tag: "Bảo Mật Thụy Sĩ",
+    tagColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    desc: "Hệ sinh thái bảo mật chuẩn Thụy Sĩ: Email mã hóa đầu cuối, VPN an toàn và lưu trữ đám mây ẩn danh.",
+    icon: "fa-lock",
+    color: "#a855f7",
+    botCmd: "proton"
+  },
+  {
+    id: "adguard_vpn",
+    name: "AdGuard VPN & AdBlocker",
+    category: "mmo_infra",
+    tag: "Chặn Quảng Cáo 100%",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "Giao thức VPN ẩn danh vượt tường lửa mạnh mẽ đi kèm khả năng chặn sạch mọi mã theo dõi và quảng cáo phiền toái.",
+    icon: "fa-shield-halved",
+    color: "#10b981",
+    botCmd: "adguard"
+  },
+  {
+    id: "hma_vpn",
+    name: "HMA VPN (HideMyAss)",
+    category: "mmo_infra",
+    tag: "290+ Quốc Gia",
+    tagColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+    desc: "Hỗ trợ đổi IP tại hơn 290 quốc gia và vùng lãnh thổ, tính năng IP Shuffle đổi IP ngẫu nhiên liên tục chống chặn.",
+    icon: "fa-mask",
+    color: "#f59e0b",
+    botCmd: "hmavpn"
+  },
+  {
+    id: "hotspot_shield",
+    name: "Hotspot Shield VPN",
+    category: "mmo_infra",
+    tag: "Hydra Protocol",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Công nghệ Hydra độc quyền tăng tốc băng thông chơi game và streaming 4K không bị giật lag.",
+    icon: "fa-fire",
+    color: "#3b82f6",
+    botCmd: "hotspotshield"
+  },
+  {
+    id: "purevpn",
+    name: "PureVPN",
+    category: "mmo_infra",
+    tag: "Dedicated IP",
+    tagColor: "bg-violet-500/10 text-violet-400 border-violet-500/20",
+    desc: "Hơn 6500 máy chủ bảo mật cao, hỗ trợ Port Forwarding và cung cấp IP chuyên dụng riêng biệt cho MMO.",
+    icon: "fa-arrow-right-arrow-left",
+    color: "#8b5cf6",
+    botCmd: "purevpn"
+  },
+  {
+    id: "ipvanish",
+    name: "IPVanish VPN",
+    category: "mmo_infra",
+    tag: "Không Lưu Nhật Ký",
+    tagColor: "bg-lime-500/10 text-lime-400 border-lime-500/20",
+    desc: "Tốc độ tải xuống vượt trội, không giới hạn kết nối đồng thời và chính sách bảo mật Zero-Logs đã được kiểm toán.",
+    icon: "fa-ghost",
+    color: "#84cc16",
+    botCmd: "ipvanish"
+  },
+  {
+    id: "norton_vpn",
+    name: "Norton Secure VPN",
+    category: "mmo_infra",
+    tag: "Tập Đoàn An Ninh",
+    tagColor: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
+    desc: "Bảo vệ kết nối Wi-Fi công cộng khỏi tin tặc, cảnh báo trang web giả mạo và lừa đảo tài chính.",
+    icon: "fa-shield-virus",
+    color: "#eab308",
+    botCmd: "nortonvpn"
+  },
+
+  // 5. Tài Khoản Số & Giải Trí (23)
+  {
+    id: "telegram_premium",
+    name: "Telegram Premium (Tele)",
+    category: "digital_acc",
+    tag: "Bestseller",
+    tagColor: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+    desc: "Tải file 4GB, tốc độ download tối đa, chuyển giọng nói thành text, huy hiệu sao xanh và sticker động độc quyền.",
+    icon: "fa-paper-plane",
+    color: "#06b6d4",
+    botCmd: "telegram"
+  },
+  {
+    id: "x_premium",
+    name: "X (Twitter) Premium Blue",
+    category: "digital_acc",
+    tag: "Tích Xanh Chính Chủ",
+    tagColor: "bg-slate-500/10 text-slate-300 border-slate-500/20",
+    desc: "Cấp tích xanh xác minh, viết bài dài 25.000 từ, chia sẻ doanh thu quảng cáo và quyền truy cập sớm Grok AI.",
+    icon: "fa-x-twitter",
+    color: "#f8fafc",
+    botCmd: "xtwitter"
+  },
+  {
+    id: "facebook_meta",
+    name: "Facebook Meta Verified / BM",
+    category: "digital_acc",
+    tag: "Tích Xanh FB",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Xác minh tích xanh bảo vệ nick cá nhân và Fanpage chống giả mạo, hỗ trợ kỹ thuật trực tiếp từ Meta.",
+    icon: "fa-facebook",
+    color: "#3b82f6",
+    botCmd: "facebook"
+  },
+  {
+    id: "linkedin_premium",
+    name: "LinkedIn Business / Sales Nav",
+    category: "digital_acc",
+    tag: "Tuyển Dụng & B2B",
+    tagColor: "bg-sky-500/10 text-sky-400 border-sky-500/20",
+    desc: "InMail trực tiếp cho đối tác cấp cao, xem ai đã ghé thăm hồ sơ và mở rộng tệp khách hàng tiềm năng không giới hạn.",
+    icon: "fa-linkedin",
+    color: "#0ea5e9",
+    botCmd: "linkedin"
+  },
+  {
+    id: "discord_nitro",
+    name: "Discord Nitro Full",
+    category: "digital_acc",
+    tag: "Gamer / Web3",
+    tagColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+    desc: "Stream 4K 60fps nét căng, dùng emoji và sticker tùy chỉnh mọi server, 2 Server Boosts miễn phí mỗi tháng.",
+    icon: "fa-discord",
+    color: "#6366f1",
+    botCmd: "discord"
+  },
+  {
+    id: "netflix",
+    name: "Netflix Premium 4K UltraHD",
+    category: "digital_acc",
+    tag: "Kho Phim 4K",
+    tagColor: "bg-red-500/10 text-red-400 border-red-500/20",
+    desc: "Tài khoản riêng/profile riêng xem bom tấn không quảng cáo, âm thanh vòm Spatial Audio sống động.",
+    icon: "fa-film",
+    color: "#ef4444",
+    botCmd: "netflix"
+  },
+  {
+    id: "youtube_premium",
+    name: "YouTube Premium",
+    category: "digital_acc",
+    tag: "Không Quảng Cáo",
+    tagColor: "bg-red-500/10 text-red-400 border-red-500/20",
+    desc: "Xem video không quảng cáo, phát trong nền khi tắt màn hình, tải video offline và nghe trọn vẹn YouTube Music.",
+    icon: "fa-youtube",
+    color: "#ef4444",
+    botCmd: "youtube"
+  },
+  {
+    id: "spotify",
+    name: "Spotify Premium",
+    category: "digital_acc",
+    tag: "Âm Nhạc Đỉnh Cao",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "Nghe nhạc chất lượng cao 320kbps không quảng cáo, chuyển bài không giới hạn và tải offline trên mọi thiết bị.",
+    icon: "fa-spotify",
+    color: "#10b981",
+    botCmd: "spotify"
+  },
+  {
+    id: "apple_bundle",
+    name: "Apple One / Music / iCloud+",
+    category: "digital_acc",
+    tag: "Hệ Sinh Thái Táo",
+    tagColor: "bg-slate-400/10 text-slate-200 border-slate-400/20",
+    desc: "Gói gia đình trọn vẹn: Apple Music Lossless, lưu trữ iCloud 200GB/2TB, Apple TV+ và Apple Arcade.",
+    icon: "fa-apple",
+    color: "#e2e8f0",
+    botCmd: "apple"
+  },
+  {
+    id: "amazon_prime",
+    name: "Amazon Prime Video",
+    category: "digital_acc",
+    tag: "Phim Chiếu Rạp",
+    tagColor: "bg-sky-500/10 text-sky-400 border-sky-500/20",
+    desc: "Thưởng thức các series đình đám độc quyền của Amazon Studios chất lượng 4K HDR cùng ưu đãi Prime Gaming.",
+    icon: "fa-amazon",
+    color: "#0ea5e9",
+    botCmd: "amazonprime"
+  },
+  {
+    id: "hbo_max",
+    name: "HBO Max (Max 4K)",
+    category: "digital_acc",
+    tag: "Cinema Max",
+    tagColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    desc: "Kho phim điện ảnh bom tấn Warner Bros, vũ trụ điện ảnh DC, Game of Thrones và Discovery+ đặc sắc.",
+    icon: "fa-tv",
+    color: "#a855f7",
+    botCmd: "hbomax"
+  },
+  {
+    id: "fpt_play",
+    name: "FPT Play VIP / MAX",
+    category: "digital_acc",
+    tag: "Bóng Đá & Truyền Hình",
+    tagColor: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+    desc: "Trọn vẹn các giải thể thao đỉnh cao: C1 Champions League, V-League, truyền hình trực tiếp 200+ kênh sắc nét.",
+    icon: "fa-play",
+    color: "#f97316",
+    botCmd: "fptplay"
+  },
+  {
+    id: "vieon",
+    name: "VieON All Access / VIP",
+    category: "digital_acc",
+    tag: "Giải Trí Việt",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "Xem sớm các gameshow số 1 Việt Nam (Rap Việt, 2 Ngày 1 Đêm), phim bộ độc quyền và các kênh K+ bóng đá.",
+    icon: "fa-circle-play",
+    color: "#10b981",
+    botCmd: "vieon"
+  },
+  {
+    id: "iqiyi",
+    name: "iQIYI VIP Gold / Diamond",
+    category: "digital_acc",
+    tag: "Phim Hoa Ngữ",
+    tagColor: "bg-teal-500/10 text-teal-400 border-teal-500/20",
+    desc: "Xem sớm phim truyền hình và anime hot nhất với độ phân giải Dolby Vision cùng phụ đề đa ngôn ngữ.",
+    icon: "fa-video",
+    color: "#14b8a6",
+    botCmd: "iqiyi"
+  },
+  {
+    id: "crunchyroll",
+    name: "Crunchyroll Mega Fan",
+    category: "digital_acc",
+    tag: "Thiên Đường Anime",
+    tagColor: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+    desc: "Thư viện anime bản quyền lớn nhất thế giới, xem tập mới phát sóng cùng giờ với Nhật Bản chất lượng full HD.",
+    icon: "fa-dragon",
+    color: "#f97316",
+    botCmd: "crunchyroll"
+  },
+  {
+    id: "youku",
+    name: "Youku VIP",
+    category: "digital_acc",
+    tag: "Drama VIP",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Mở khóa toàn bộ kho phim cổ trang và show truyền hình giải trí hấp dẫn của đài Youku không quảng cáo.",
+    icon: "fa-film",
+    color: "#3b82f6",
+    botCmd: "youku"
+  },
+  {
+    id: "locket",
+    name: "Locket Gold VIP",
+    category: "digital_acc",
+    tag: "GenZ Widget",
+    tagColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+    desc: "Chia sẻ ảnh không giới hạn với bạn bè thân thiết, mở biểu tượng độc quyền và xem lịch sử ảnh quá khứ.",
+    icon: "fa-camera-retro",
+    color: "#f59e0b",
+    botCmd: "locket"
+  },
+  {
+    id: "tiktok_acc",
+    name: "TikTok Shop / Ads / Agency",
+    category: "digital_acc",
+    tag: "MMO Affiliate",
+    tagColor: "bg-slate-400/10 text-slate-200 border-slate-400/20",
+    desc: "Tài khoản TikTok cổ, kích hoạt sẵn TikTok Shop mở affiliate và tài khoản Agency bao thuế cắn tiền mượt.",
+    icon: "fa-tiktok",
+    color: "#e2e8f0",
+    botCmd: "tiktok"
+  },
+  {
+    id: "wispr_flow",
+    name: "Wispr Flow Voice Dictation",
+    category: "digital_acc",
+    tag: "AI Speech-to-Text",
+    tagColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+    desc: "Nói để nhập liệu văn bản với tốc độ nhanh gấp 3 lần gõ phím, tự động căn chỉnh ngữ pháp thông minh.",
+    icon: "fa-lines-leaning",
+    color: "#6366f1",
+    botCmd: "wisprflow"
+  },
+  {
+    id: "brain_fm",
+    name: "Brain.fm Focus Pro",
+    category: "digital_acc",
+    tag: "Sóng Não Tập Trung",
+    tagColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    desc: "Âm nhạc kích thích sóng não được chứng minh khoa học giúp duy trì trạng thái tập trung sâu khi code và trade.",
+    icon: "fa-headphones",
+    color: "#a855f7",
+    botCmd: "brainfm"
+  },
+  {
+    id: "xbox_pass",
+    name: "Xbox Game Pass Ultimate",
+    category: "digital_acc",
+    tag: "Kho 500+ Game",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "Chơi hàng trăm tựa game bom tấn trên PC và console, bao gồm EA Play và dịch vụ Cloud Gaming không cần tải.",
+    icon: "fa-gamepad",
+    color: "#10b981",
+    botCmd: "xbox"
+  },
+  {
+    id: "roblox",
+    name: "Roblox Premium & Robux",
+    category: "digital_acc",
+    tag: "Metaverse",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Nạp Robux chính hãng giá tốt, cấp quyền trao đổi vật phẩm và nhận stipend Robux định kỳ mỗi tháng.",
+    icon: "fa-shapes",
+    color: "#3b82f6",
+    botCmd: "roblox"
+  },
+  {
+    id: "zoom_pro",
+    name: "Zoom Pro Meeting",
+    category: "digital_acc",
+    tag: "Họp & Webinar",
+    tagColor: "bg-sky-500/10 text-sky-400 border-sky-500/20",
+    desc: "Họp trực tuyến không giới hạn thời gian đến 30 giờ/phiên, hỗ trợ 300 người tham gia và ghi hình đám mây.",
+    icon: "fa-video",
+    color: "#0ea5e9",
+    botCmd: "zoom"
+  },
+
+  // 6. Bản Quyền & Học Tập (11)
+  {
+    id: "windows_key",
+    name: "Key Windows 10/11 Pro OEM",
+    category: "edu_office",
+    tag: "Vĩnh Viễn Theo Main",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Key bản quyền số chính hãng Microsoft, kích hoạt trực tiếp vĩnh viễn, bảo hành trọn đời máy.",
+    icon: "fa-windows",
+    color: "#3b82f6",
+    botCmd: "windows"
+  },
+  {
+    id: "office_365",
+    name: "Microsoft 365 + 1TB OneDrive",
+    category: "edu_office",
+    tag: "Bán Chạy Nhất",
+    tagColor: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+    desc: "Trọn bộ Word, Excel, PowerPoint, Outlook mới nhất dùng đồng thời 5 thiết bị kèm 1000GB OneDrive bảo mật.",
+    icon: "fa-file-word",
+    color: "#f97316",
+    botCmd: "office365"
+  },
+  {
+    id: "google_one",
+    name: "Google One 2TB Storage",
+    category: "edu_office",
+    tag: "Dung Lượng Google",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "Nâng cấp trực tiếp dung lượng lưu trữ Google Drive, Gmail và Google Photos trên email chính chủ an toàn 100%.",
+    icon: "fa-google",
+    color: "#10b981",
+    botCmd: "googleone"
+  },
+  {
+    id: "gmail_aged",
+    name: "Gmail Cổ / Google Workspace",
+    category: "edu_office",
+    tag: "Tài Khoản Trust Cao",
+    tagColor: "bg-red-500/10 text-red-400 border-red-500/20",
+    desc: "Tài khoản Gmail năm cổ tạo từ 2015-2022, đã ngâm tương tác, trust cao để chạy quảng cáo Google Ads và đăng ký tool.",
+    icon: "fa-envelope",
+    color: "#ef4444",
+    botCmd: "gmail"
+  },
+  {
+    id: "kaspersky",
+    name: "Kaspersky Total Security",
+    category: "edu_office",
+    tag: "Diệt Virus Số 1",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "Phần mềm bảo vệ máy tính hàng đầu thế giới, ngăn chặn mã độc tống tiền Ransomware và bảo vệ thanh toán trực tuyến.",
+    icon: "fa-shield-heart",
+    color: "#10b981",
+    botCmd: "kaspersky"
+  },
+  {
+    id: "coursera",
+    name: "Coursera Plus",
+    category: "edu_office",
+    tag: "Chứng Chỉ Quốc Tế",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Học không giới hạn hơn 7.000 khóa học và nhận chứng chỉ danh giá từ Google, Meta, IBM, Stanford, Yale.",
+    icon: "fa-graduation-cap",
+    color: "#3b82f6",
+    botCmd: "coursera"
+  },
+  {
+    id: "udemy",
+    name: "Khóa Học Udemy Personal Plan",
+    category: "edu_office",
+    tag: "Kỹ Năng Thực Chiến",
+    tagColor: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+    desc: "Truy cập không giới hạn hơn 11.000 khóa học được đánh giá cao nhất về lập trình, MMO, marketing và đầu tư.",
+    icon: "fa-chalkboard-user",
+    color: "#a855f7",
+    botCmd: "udemy"
+  },
+  {
+    id: "skillshare",
+    name: "Skillshare Premium",
+    category: "edu_office",
+    tag: "Sáng Tạo & Đồ Họa",
+    tagColor: "bg-teal-500/10 text-teal-400 border-teal-500/20",
+    desc: "Nền tảng học kỹ năng sáng tạo video, vẽ minh họa, kinh doanh online từ những chuyên gia hàng đầu thế giới.",
+    icon: "fa-book-open",
+    color: "#14b8a6",
+    botCmd: "skillshare"
+  },
+  {
+    id: "duolingo",
+    name: "Duolingo Super Vĩnh Viễn",
+    category: "edu_office",
+    tag: "Học Ngoại Ngữ",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    desc: "Trái tim vô hạn, không quảng cáo, luyện tập phát âm cá nhân hóa giúp học tiếng Anh và hơn 40 ngoại ngữ siêu tốc.",
+    icon: "fa-language",
+    color: "#10b981",
+    botCmd: "duolingo"
+  },
+  {
+    id: "quizlet",
+    name: "Quizlet Plus",
+    category: "edu_office",
+    tag: "Flashcards Ôn Thi",
+    tagColor: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    desc: "Học từ vựng và ghi nhớ kiến thức qua thẻ ghi nhớ AI, bài kiểm tra thực hành không giới hạn và học ngoại tuyến.",
+    icon: "fa-cards",
+    color: "#3b82f6",
+    botCmd: "quizlet"
+  },
+  {
+    id: "kahoot",
+    name: "Kahoot 360 / Pro",
+    category: "edu_office",
+    tag: "Game Trắc Nghiệm",
+    tagColor: "bg-violet-500/10 text-violet-400 border-violet-500/20",
+    desc: "Tạo trò chơi trắc nghiệm học tập và thuyết trình tương tác quy mô lớn lên đến 2000 người tham gia cùng lúc.",
+    icon: "fa-award",
+    color: "#8b5cf6",
+    botCmd: "kahoot"
+  }
+];
