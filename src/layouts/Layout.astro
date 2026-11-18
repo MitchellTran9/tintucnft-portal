@@ -87,44 +87,103 @@ const navItems = [
   </head>
   <body class="min-h-screen flex flex-col bg-[#0b0f17] text-slate-200 antialiased selection:bg-emerald-500 selection:text-white">
 
-    <!-- Top Branding Header -->
-    <header class="border-b border-slate-800 bg-[#0f172a]/80 backdrop-blur-md sticky top-0 z-50">
+    <!-- Substack-Style Header -->
+    <header class="border-b border-slate-800/80 bg-[#0b0f17]/95 backdrop-blur-md sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <!-- Top bar: Brand Title & Fast Actions -->
-        <div class="flex items-center justify-between py-3 border-b border-slate-800/60">
-          <a href="/" class="flex items-center space-x-2 text-center mx-auto sm:mx-0">
-            <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded">TINTUCNFT.COM</span>
-            <h1 class="text-base sm:text-lg font-bold text-white hover:text-emerald-400 transition-colors">
-              Kho Tài Nguyên AI - MMO & Giải Pháp Bot Trading
-            </h1>
-          </a>
-          <div class="hidden sm:flex items-center space-x-4">
-            <a href="https://t.me/channelmcg" target="_blank" rel="noopener noreferrer" class="text-xs font-medium text-slate-300 hover:text-white bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700 hover:border-emerald-500 transition-all flex items-center gap-1.5">
-              <span>✈️ Telegram Channel</span>
+        <!-- Top bar: Centered Publication Title & Right Substack Action Icons -->
+        <div class="relative flex items-center justify-between py-3 border-b border-slate-800/60 min-h-[52px]">
+          <!-- Left: Brand Tag -->
+          <div class="flex items-center space-x-2">
+            <a href="/" class="flex items-center space-x-2 group">
+              <span class="text-[11px] font-bold tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2.5 py-0.5 rounded uppercase">
+                TINTUCNFT.COM
+              </span>
             </a>
-            <a href="https://t.me/willrich" target="_blank" rel="noopener noreferrer" class="text-xs font-medium text-emerald-400 hover:text-emerald-300 bg-emerald-950/40 px-3 py-1.5 rounded-full border border-emerald-800/80 transition-all">
-              Hỗ Trợ 1-1
+          </div>
+
+          <!-- Center: Main Title (Exact Substack Header Style) -->
+          <div class="hidden md:block absolute left-1/2 -translate-x-1/2 text-center pointer-events-auto">
+            <a href="/" class="text-base lg:text-lg font-bold text-white hover:text-emerald-400 transition-colors whitespace-nowrap tracking-tight">
+              Kho Tài Nguyên AI - MMO & Giải Pháp Bot Trading
+            </a>
+          </div>
+
+          <!-- Mobile Center (if screen small) -->
+          <div class="md:hidden flex-1 px-2 text-center">
+            <a href="/" class="text-xs sm:text-sm font-bold text-white truncate block">
+              Kho Tài Nguyên AI - MMO
+            </a>
+          </div>
+
+          <!-- Right: Substack-style Action Icons & Dashboard Button -->
+          <div class="flex items-center space-x-2.5 sm:space-x-3.5">
+            <!-- Search Icon -->
+            <a
+              href="#search"
+              id="searchHeaderBtn"
+              title="Tìm kiếm bài viết"
+              class="text-slate-400 hover:text-white transition-colors p-1.5 rounded-full hover:bg-slate-800/70"
+            >
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </a>
+
+            <!-- Telegram / Chat Icon -->
+            <a
+              href="https://t.me/channelmcg"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Cộng đồng Telegram"
+              class="text-slate-400 hover:text-emerald-400 transition-colors p-1.5 rounded-full hover:bg-slate-800/70 hidden sm:inline-flex"
+            >
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </a>
+
+            <!-- Notification Bell Icon (with live status ping) -->
+            <a
+              href="/trading-signal-vip"
+              title="Tín hiệu Live Realtime MT5"
+              class="relative text-slate-400 hover:text-white transition-colors p-1.5 rounded-full hover:bg-slate-800/70 hidden sm:inline-flex"
+            >
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="absolute top-1 right-1 w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span>
+              <span class="absolute top-1 right-1 w-2 h-2 bg-emerald-500 rounded-full"></span>
+            </a>
+
+            <!-- Dashboard Button (Substack style) -->
+            <a
+              href="/trading-signal-vip"
+              class="text-xs font-semibold text-slate-100 bg-slate-800 hover:bg-emerald-600 hover:text-white border border-slate-700/80 px-3.5 py-1.5 rounded-full transition-all duration-200 shadow-sm"
+            >
+              Dashboard
             </a>
           </div>
         </div>
 
-        <!-- Main Navigation Bar (Exact Substack structure) -->
-        <nav class="flex items-center justify-between overflow-x-auto py-2 scrollbar-none text-sm font-medium">
-          <div class="flex items-center space-x-1 sm:space-x-2 whitespace-nowrap">
+        <!-- Main Navigation Bar (Exact Substack Line Tabs) -->
+        <nav class="flex items-center overflow-x-auto scrollbar-none text-xs sm:text-sm font-medium">
+          <div class="flex items-center space-x-6 sm:space-x-8 whitespace-nowrap pt-1">
             {navItems.map((item) => {
               const isActive = activeNav === item.name;
               return (
                 <a
                   href={item.href}
-                  class={`px-3 py-1.5 rounded-lg transition-all text-xs sm:text-sm ${
+                  class={`relative pb-2.5 pt-1.5 transition-all font-medium ${
                     isActive
-                      ? "text-emerald-400 font-bold bg-slate-800/80 border-b-2 border-emerald-400"
+                      ? "text-white font-bold border-b-2 border-emerald-400 -mb-[1px]"
                       : item.isProduct
-                      ? "text-amber-300 hover:text-amber-200 hover:bg-slate-800/40"
-                      : "text-slate-300 hover:text-white hover:bg-slate-800/40"
+                      ? "text-amber-300 hover:text-amber-200 border-b-2 border-transparent hover:border-amber-400/50 -mb-[1px]"
+                      : "text-slate-400 hover:text-slate-100 border-b-2 border-transparent hover:border-slate-500 -mb-[1px]"
                   }`}
                 >
-                  {item.isProduct && <span class="text-xs mr-1">⚡</span>}
+                  {item.isProduct && <span class="text-[11px] mr-1 text-amber-400">⚡</span>}
                   {item.name}
                 </a>
               );
