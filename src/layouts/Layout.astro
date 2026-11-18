@@ -58,6 +58,16 @@ const navItems = [
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 
+    <!-- Theme Initialization Script (Anti-FOUC) -->
+    <script is:inline>
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
     <style is:global>
       body {
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -115,14 +125,14 @@ const navItems = [
             </a>
           </div>
 
-          <!-- Right: Substack-style Action Icons & Dashboard Button -->
-          <div class="flex items-center space-x-2.5 sm:space-x-3.5">
+          <!-- Right: Action Icons, Support, Community & Theme Toggle -->
+          <div class="flex items-center space-x-2 sm:space-x-3">
             <!-- Search Icon -->
             <a
               href="#search"
               id="searchHeaderBtn"
               title="Tìm kiếm bài viết"
-              class="text-slate-400 hover:text-white transition-colors p-1.5 rounded-full hover:bg-slate-800/70"
+              class="text-slate-400 hover:text-emerald-500 transition-colors p-1.5 rounded-full hover:bg-slate-800/70"
             >
               <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="7"></circle>
@@ -130,24 +140,25 @@ const navItems = [
               </svg>
             </a>
 
-            <!-- Telegram / Chat Icon -->
+            <!-- Nút Nhắn tin: Hỗ trợ 24/7 (link: https://t.me/@willrichus) -->
             <a
-              href="https://t.me/channelmcg"
+              href="https://t.me/@willrichus"
               target="_blank"
               rel="noopener noreferrer"
-              title="Cộng đồng Telegram"
-              class="text-slate-400 hover:text-emerald-400 transition-colors p-1.5 rounded-full hover:bg-slate-800/70 hidden sm:inline-flex"
+              title="Hỗ trợ kỹ thuật 24/7 qua Telegram"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-emerald-400 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 px-2.5 sm:px-3 py-1.5 rounded-full transition-all"
             >
-              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
               </svg>
+              <span class="whitespace-nowrap">Hỗ trợ 24/7</span>
             </a>
 
-            <!-- Notification Bell Icon (with live status ping) -->
+            <!-- Notification Bell Icon (giữ nguyên, gắn với Trading Signal VIP) -->
             <a
               href="/trading-signal-vip"
               title="Tín hiệu Live Realtime MT5"
-              class="relative text-slate-400 hover:text-white transition-colors p-1.5 rounded-full hover:bg-slate-800/70 hidden sm:inline-flex"
+              class="relative text-slate-400 hover:text-emerald-400 transition-colors p-1.5 rounded-full hover:bg-slate-800/70"
             >
               <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -157,13 +168,45 @@ const navItems = [
               <span class="absolute top-1 right-1 w-2 h-2 bg-emerald-500 rounded-full"></span>
             </a>
 
-            <!-- Dashboard Button (Substack style) -->
+            <!-- Nút Cộng đồng Telegram (đổi từ Dashboard, gắn link: https://t.me/channelmcg) -->
             <a
-              href="/trading-signal-vip"
-              class="text-xs font-semibold text-slate-100 bg-slate-800 hover:bg-emerald-600 hover:text-white border border-slate-700/80 px-3.5 py-1.5 rounded-full transition-all duration-200 shadow-sm"
+              href="https://t.me/channelmcg"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Tham gia Kênh Telegram Tín Hiệu & MMO"
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-950 bg-emerald-500 hover:bg-emerald-400 px-3 sm:px-3.5 py-1.5 rounded-full transition-all duration-200 shadow-sm shadow-emerald-500/20 whitespace-nowrap"
             >
-              Dashboard
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.832.942z"/>
+              </svg>
+              <span>Cộng đồng Telegram</span>
             </a>
+
+            <!-- Nút Chọn Giao Diện Sáng / Tối (Theme Toggle) Ở Góc Phải -->
+            <button
+              id="themeToggleBtn"
+              type="button"
+              title="Chuyển đổi giao diện Sáng / Tối"
+              class="text-slate-400 hover:text-amber-400 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 p-1.5 sm:p-2 rounded-full transition-all flex items-center justify-center cursor-pointer shadow-sm"
+              aria-label="Toggle theme"
+            >
+              <!-- Sun icon (khi dark mode) -->
+              <svg id="themeSunIcon" class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <!-- Moon icon (khi light mode) -->
+              <svg id="themeMoonIcon" class="w-4 h-4 text-slate-700 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -239,5 +282,67 @@ const navItems = [
       </div>
     </footer>
 
+    <!-- Floating Theme Toggle at bottom right for extra convenience -->
+    <button
+      id="floatingThemeBtn"
+      type="button"
+      title="Chuyển đổi giao diện Sáng / Tối"
+      class="fixed bottom-6 right-6 z-40 bg-slate-900/90 dark:bg-slate-800/90 hover:bg-emerald-500 text-amber-400 dark:text-amber-300 hover:text-slate-950 p-3 rounded-full shadow-2xl border border-slate-700/80 hover:border-emerald-400 transition-all duration-200 cursor-pointer flex items-center justify-center backdrop-blur-md"
+      aria-label="Toggle theme mode"
+    >
+      <svg class="w-5 h-5 theme-sun-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="w-5 h-5 theme-moon-icon hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+
+    <!-- Theme Toggle Handler Script -->
+    <script is:inline>
+      function syncThemeUI() {
+        const isDark = document.documentElement.classList.contains('dark');
+        const sunIcons = document.querySelectorAll('#themeSunIcon, .theme-sun-icon');
+        const moonIcons = document.querySelectorAll('#themeMoonIcon, .theme-moon-icon');
+
+        sunIcons.forEach(icon => {
+          if (isDark) icon.classList.remove('hidden');
+          else icon.classList.add('hidden');
+        });
+
+        moonIcons.forEach(icon => {
+          if (!isDark) icon.classList.remove('hidden');
+          else icon.classList.add('hidden');
+        });
+      }
+
+      function toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+        syncThemeUI();
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        syncThemeUI();
+        const btns = document.querySelectorAll('#themeToggleBtn, #floatingThemeBtn');
+        btns.forEach(btn => {
+          btn.addEventListener('click', toggleTheme);
+        });
+      });
+    </script>
   </body>
 </html>
