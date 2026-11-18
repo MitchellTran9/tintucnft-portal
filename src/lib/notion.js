@@ -19,6 +19,22 @@ export async function getPublishedArticles(category = null) {
         checkbox: {
           equals: true
         }
+      },
+      {
+        or: [
+          {
+            property: 'Language',
+            select: {
+              equals: 'VI'
+            }
+          },
+          {
+            property: 'Language',
+            select: {
+              equals: 'Both'
+            }
+          }
+        ]
       }
     ];
 
@@ -35,7 +51,7 @@ export async function getPublishedArticles(category = null) {
       method: 'POST',
       headers: NOTION_HEADERS,
       body: JSON.stringify({
-        filter: filters.length === 1 ? filters[0] : { and: filters },
+        filter: { and: filters },
         sorts: [
           {
             property: 'Date',
@@ -91,6 +107,22 @@ export async function getArticleBySlug(slug) {
               checkbox: {
                 equals: true
               }
+            },
+            {
+              or: [
+                {
+                  property: 'Language',
+                  select: {
+                    equals: 'VI'
+                  }
+                },
+                {
+                  property: 'Language',
+                  select: {
+                    equals: 'Both'
+                  }
+                }
+              ]
             }
           ]
         }
