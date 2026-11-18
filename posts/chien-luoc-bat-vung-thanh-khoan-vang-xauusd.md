@@ -11,9 +11,8 @@ published: true
 
 Thị trường Vàng (XAUUSD) không vận hành theo ngẫu nhiên, nó vận hành theo dòng chảy của thanh khoản. Nếu bạn vẫn đang giao dịch dựa trên các chỉ báo lạc hậu như RSI, MACD hay các đường MA cắt nhau, bạn không phải là nhà giao dịch, bạn là "thanh khoản" cho cá mập. Tại sao tài khoản của bạn liên tục cháy dù đã phân tích kỹ thuật rất bài bản? Câu trả lời nằm ở việc bạn chưa hiểu cách các tổ chức tài chính (Smart Money) thao túng cấu trúc thị trường để quét Stop Loss của đám đông.
 
-
-![Chiến Lược Bắt Vùng Thanh Khoản Vàng XAUUSD - Hướng dẫn chuyên sâu về Chiến Lược Bắt Vùng Thanh Khoản Vàng XAUUSD](https://image.pollinations.ai/prompt/institutional%20financial%20chart%20trading%20analysis%2C%20candlestick%20order%20block%20liquidity%20sweep%2C%20neon%20green%20and%20red%20glowing%20lines%2C%203d%20data%20visualization%20on%20glass%20screen%2C%20professional%20digital%20render%2C%20cinematic%20lighting%2C%208k%20resolution%2C%20highly%20detailed%2C%20photorealistic%2C%20modern%20tech%20aesthetic?width=1200&height=675&nologo=true&seed=1938)
-*Hình 1: Minh họa thực chiến cho Hướng dẫn chuyên sâu về Chiến Lược Bắt Vùng Thanh Khoản Vàng XAUUSD*
+![Chiến Lược Bắt Vùng Thanh Khoản Vàng XAUUSD - Bẫy Thanh Khoản & Dấu Chân Smart Money](https://raw.githubusercontent.com/MitchellTran9/tintucnft-portal/main/public/images/posts/chien-luoc-bat-vung-thanh-khoan-vang-xauusd/section_1.jpg)
+*Hình 1: Mô hình quét thanh khoản (Liquidity Sweep) và bẫy giá Smart Money trên khung biểu đồ Vàng XAUUSD*
 
 Chào mừng bạn đến với tư duy giao dịch chuyên nghiệp. Bài viết này sẽ vạch trần cách vận hành của "nhà cái" và cung cấp cho bạn khung chiến lược **Chiến Lược Bắt Vùng Thanh Khoản Vàng XAUUSD** để tối ưu hóa lợi nhuận với tỷ lệ R:R tối thiểu 1:2.5.
 
@@ -33,9 +32,8 @@ Chào mừng bạn đến với tư duy giao dịch chuyên nghiệp. Bài viế
 
 Để thành công, bạn cần kỷ luật thực thi theo quy trình "Smart Money" sau đây:
 
-
-![Chiến Lược Bắt Vùng Thanh Khoản Vàng XAUUSD - Chiến Lược Bắt Vùng Thanh Khoản Vàng XAUUSD: Quy trình 4 bước](https://image.pollinations.ai/prompt/institutional%20financial%20chart%20trading%20analysis%2C%20candlestick%20order%20block%20liquidity%20sweep%2C%20neon%20green%20and%20red%20glowing%20lines%2C%203d%20data%20visualization%20on%20glass%20screen%2C%20professional%20digital%20render%2C%20cinematic%20lighting%2C%208k%20resolution%2C%20highly%20detailed%2C%20photorealistic%2C%20modern%20tech%20aesthetic?width=1200&height=675&nologo=true&seed=445476)
-*Hình 2: Minh họa thực chiến cho Chiến Lược Bắt Vùng Thanh Khoản Vàng XAUUSD: Quy trình 4 bước*
+![Cấu Trúc Thị Trường SMC - Nhận Diện Bullish BOS & CHoCH](https://raw.githubusercontent.com/MitchellTran9/tintucnft-portal/main/public/images/posts/chien-luoc-bat-vung-thanh-khoan-vang-xauusd/section_2.jpg)
+*Hình 2: Sơ đồ cấu trúc thị trường SMC - Nhận diện Bullish BOS (Break of Structure) & CHoCH (Change of Character)*
 
 ### Bước 1: Xác định cấu trúc thị trường (Market Structure)
 Luôn bắt đầu từ khung H4 hoặc H1 để xác định xu hướng chính. Tìm kiếm các điểm **BOS (Break of Structure)** để xác nhận xu hướng tiếp diễn. Nếu giá phá vỡ đỉnh cũ, đó là xu hướng tăng. Nếu giá phá vỡ đáy cũ, đó là xu hướng giảm. Đừng bao giờ đi ngược xu hướng nếu chưa có tín hiệu **CHoCH (Change of Character)** rõ ràng.
@@ -48,9 +46,8 @@ Cá mập cần thanh khoản để khớp lệnh lớn. Họ sẽ tạo ra các
 Sau khi quét thanh khoản, giá thường để lại các khoảng trống **Fair Value Gap (FVG)**. Đây là sự mất cân bằng giữa cung và cầu. Giá có xu hướng quay lại lấp đầy khoảng trống này trước khi tiếp tục xu hướng chính.
 *   **Entry:** Đặt lệnh tại vùng **Order Block** nằm ngay phía dưới (nếu buy) hoặc trên (nếu sell) của FVG.
 
-
-![Chiến Lược Bắt Vùng Thanh Khoản Vàng XAUUSD - Bước 3: Tìm điểm vào lệnh tại Order Block (OB) và FVG](https://image.pollinations.ai/prompt/institutional%20financial%20chart%20trading%20analysis%2C%20candlestick%20order%20block%20liquidity%20sweep%2C%20neon%20green%20and%20red%20glowing%20lines%2C%203d%20data%20visualization%20on%20glass%20screen%2C%20professional%20digital%20render%2C%20cinematic%20lighting%2C%208k%20resolution%2C%20highly%20detailed%2C%20photorealistic%2C%20modern%20tech%20aesthetic?width=1200&height=675&nologo=true&seed=929555)
-*Hình 3: Minh họa thực chiến cho Bước 3: Tìm điểm vào lệnh tại Order Block (OB) và FVG*
+![Vùng Cầu Order Block Kết Hợp Khoảng Trống FVG](https://raw.githubusercontent.com/MitchellTran9/tintucnft-portal/main/public/images/posts/chien-luoc-bat-vung-thanh-khoan-vang-xauusd/section_3.jpg)
+*Hình 3: Vùng cầu Order Block (OB) kết hợp khoảng trống mất cân bằng Fair Value Gap (FVG)*
 
 ### Bước 4: Thiết lập tỷ lệ R:R tối thiểu 1:2.5
 Đây là chìa khóa để tồn tại. Nếu bạn chấp nhận rủi ro 1 phần để đổi lấy 2.5 phần lợi nhuận, bạn chỉ cần tỷ lệ thắng 40% là đã có lợi nhuận bền vững.
@@ -66,10 +63,6 @@ Sau khi quét thanh khoản, giá thường để lại các khoảng trống **
 | **Take Profit 1** | Đỉnh gần nhất (Liquidity cũ) | Chốt 50% khối lượng |
 | **Take Profit 2** | Vùng FVG đối diện | Tối ưu hóa R:R lên 1:3 hoặc hơn |
 
-
-![Chiến Lược Bắt Vùng Thanh Khoản Vàng XAUUSD - Bảng thông số thực chiến (Ví dụ cho lệnh Mua Vàng)](https://images.unsplash.com/photo-1579227114347-15d08fc37cae?auto=format&fit=crop&w=1200&q=80)
-*Hình 4: Minh họa thực chiến cho Bảng thông số thực chiến (Ví dụ cho lệnh Mua Vàng)*
-
 > 💡 **Lưu ý thực chiến:** Luôn kiểm tra tin tức trên lịch kinh tế trước khi vào lệnh. Vàng cực kỳ nhạy cảm với tin tức lãi suất và chỉ số USD (DXY). Nếu có tin mạnh, hãy đứng ngoài thị trường để tránh những cú quét thanh khoản ảo.
 
 ---
@@ -80,6 +73,9 @@ Trong kỷ nguyên số, việc phân tích thủ công 24/7 là không khả th
 1. **Tự động hóa:** Vào lệnh đúng vùng thanh khoản mà không cần canh bảng điện.
 2. **Kiểm soát rủi ro:** SL/TP được thiết lập cứng ngay khi lệnh được khớp.
 3. **Chi phí tối ưu:** Giảm thiểu chi phí cơ hội và tránh được những cú "trượt giá" do thao tác chậm.
+
+![Hệ Thống Bot EA MT5 Tự Động Hóa Thực Thi Lệnh Độ Trễ Thấp](https://raw.githubusercontent.com/MitchellTran9/tintucnft-portal/main/public/images/posts/chien-luoc-bat-vung-thanh-khoan-vang-xauusd/section_4.jpg)
+*Hình 4: Hệ thống Bot EA MT5 tự động hóa khớp lệnh độ trễ dưới 10ms trên nền tảng máy chủ VPS*
 
 ---
 
