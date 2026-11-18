@@ -4,10 +4,17 @@ import { getPublishedArticles, getArticleBySlug, renderBlockToHtml } from '../..
 
 export async function getStaticPaths() {
   const articles = await getPublishedArticles();
-  return articles.map((art) => ({
-    params: { slug: art.slug },
-    props: { articleSummary: art }
-  }));
+  const seen = new Set();
+  return articles
+    .filter((art) => {
+      if (seen.has(art.slug)) return false;
+      seen.add(art.slug);
+      return true;
+    })
+    .map((art) => ({
+      params: { slug: art.slug },
+      props: { articleSummary: art }
+    }));
 }
 
 const { slug } = Astro.params;
@@ -24,90 +31,224 @@ if (!article) {
   image={article.featuredImage || "/banner.jpg"}
   activeNav={article.category}
 >
-  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
     <!-- Breadcrumb -->
-    <nav class="flex items-center space-x-2 text-xs text-slate-400 mb-6">
-      <a href="/" class="hover:text-emerald-400">Trang chủ</a>
+    <nav class="flex items-center space-x-2 text-xs text-slate-400 mb-8">
+      <a href="/" class="hover:text-emerald-400 transition-colors">Trang chủ</a>
       <span>/</span>
       <span class="text-emerald-400 font-medium">{article.category}</span>
+      <span>/</span>
+      <span class="text-slate-500 truncate max-w-[280px] sm:max-w-md">{article.title}</span>
     </nav>
 
-    <!-- Header -->
-    <header class="mb-10 pb-8 border-b border-slate-800">
-      <div class="inline-block px-3 py-1 rounded-full bg-slate-800 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
-        {article.category}
-      </div>
-      <h1 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight mb-4">
-        {article.title}
-      </h1>
-      <div class="flex items-center text-xs text-slate-400 space-x-4">
-        <span>📅 Ngày đăng: {article.date || "Hôm nay"}</span>
-        <span>•</span>
-        <span>⏱️ Thời gian đọc: 5 phút</span>
-        <span>•</span>
-        <span class="text-emerald-400">Tác giả: Smart Trader VIP Team</span>
-      </div>
-      {article.summary && (
-        <div class="mt-6 p-4 rounded-xl bg-slate-900 border-l-4 border-emerald-500 text-slate-300 text-sm leading-relaxed italic">
-          {article.summary}
-        </div>
-      )}
-    </header>
+    <!-- Main Grid: 2/3 Article Content + 1/3 Conversion Sidebar Phễu -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
-    <!-- Main Content Blocks from Notion -->
-    <div class="prose prose-invert max-w-none text-slate-300 text-base leading-relaxed">
-      {article.blocks.map((block) => (
-        <Fragment set:html={renderBlockToHtml(block)} />
-      ))}
-    </div>
+      <!-- CỘT CHÍNH: BÀI BÁO (lg:col-span-8) -->
+      <article class="lg:col-span-8">
+        <!-- Header -->
+        <header class="mb-8 pb-8 border-b border-slate-800">
+          <div class="inline-block px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-800/80 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">
+            {article.category}
+          </div>
+          <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">
+            {article.title}
+          </h1>
+          <div class="flex flex-wrap items-center text-xs text-slate-400 gap-x-4 gap-y-2">
+            <span>📅 Ngày đăng: {article.date || "Hôm nay"}</span>
+            <span>•</span>
+            <span>⏱️ Thời gian đọc: 5 phút</span>
+            <span>•</span>
+            <span class="text-emerald-400 font-semibold">Tác giả: Smart Trader VIP Team</span>
+          </div>
 
-    <!-- Dynamic Category Call-To-Action Box -->
-    <div class="mt-16 pt-8 border-t border-slate-800">
-      {article.category === 'Hướng Dẫn Về AI' ? (
-        <div class="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/60 to-slate-900 border border-emerald-800/80 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">HẠ TẦNG THỰC CHIẾN</span>
-            <h3 class="text-lg font-bold text-white mt-1">🎁 Nhận Ngay Key GPM-Login & Gói Data Skill AI</h3>
-            <p class="text-xs text-slate-400 mt-1">Hỗ trợ thiết lập VPS, Proxy IPv4 tĩnh để tự động hóa nuôi nick an toàn.</p>
-          </div>
-          <a href="/kho-ai-ha-tang-mmo" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors whitespace-nowrap shadow-lg">
-            Vào Kho MMO →
-          </a>
+          <!-- Featured Image (16:9 sắc nét) -->
+          {article.featuredImage && (
+            <div class="mt-6 rounded-2xl overflow-hidden aspect-video bg-slate-950 border border-slate-800 shadow-2xl">
+              <img
+                src={article.featuredImage}
+                alt={article.title}
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+          )}
+
+          <!-- Sáp-pô tóm tắt bài viết -->
+          {article.summary && (
+            <div class="mt-6 p-5 rounded-2xl bg-slate-900/90 border-l-4 border-emerald-500 text-slate-200 text-sm sm:text-base leading-relaxed italic shadow-inner">
+              {article.summary}
+            </div>
+          )}
+        </header>
+
+        <!-- Main Content Blocks from Notion (Đã qua bộ lọc sạch 100% metadata rác) -->
+        <div class="prose prose-invert max-w-none text-slate-300 text-base leading-relaxed">
+          {article.blocks.map((block) => (
+            <Fragment set:html={renderBlockToHtml(block)} />
+          ))}
         </div>
-      ) : article.category === 'Phân Tích Crypto và Gold' ? (
-        <div class="p-6 rounded-2xl bg-gradient-to-r from-amber-950/60 to-slate-900 border border-amber-800/80 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">TỰ ĐỘNG HÓA GIAO DỊCH</span>
-            <h3 class="text-lg font-bold text-white mt-1">📊 Tham Gia Kênh Trading Signal VIP & Trải Nghiệm Bot MT5</h3>
-            <p class="text-xs text-slate-400 mt-1">Đồng bộ tín hiệu SMC realtime và chạy thử Bot EA No Pain No Gain miễn phí 1 tuần.</p>
+
+        <!-- Dynamic Category Call-To-Action Box -->
+        <div class="mt-14 pt-8 border-t border-slate-800">
+          {article.category === 'Hướng Dẫn Về AI' ? (
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/80 to-slate-900 border border-emerald-800/80 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div>
+                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">HẠ TẦNG THỰC CHIẾN</span>
+                <h3 class="text-lg font-bold text-white mt-1">🎁 Nhận Ngay Key GPM-Login & Gói Data Skill AI</h3>
+                <p class="text-xs text-slate-400 mt-1">Hỗ trợ thiết lập VPS, Proxy IPv4 tĩnh để tự động hóa nuôi nick an toàn.</p>
+              </div>
+              <a href="/kho-ai-ha-tang-mmo" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors whitespace-nowrap shadow-lg">
+                Vào Kho MMO →
+              </a>
+            </div>
+          ) : article.category === 'Phân Tích Crypto và Gold' ? (
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-amber-950/80 to-slate-900 border border-amber-800/80 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div>
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">TỰ ĐỘNG HÓA GIAO DỊCH</span>
+                <h3 class="text-lg font-bold text-white mt-1">📊 Tham Gia Kênh Trading Signal VIP & Trải Nghiệm Bot MT5</h3>
+                <p class="text-xs text-slate-400 mt-1">Đồng bộ tín hiệu SMC realtime và chạy thử Bot EA No Pain No Gain miễn phí 1 tuần.</p>
+              </div>
+              <div class="flex gap-2">
+                <a href="/trading-signal-vip" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors whitespace-nowrap">
+                  Xem Signal VIP
+                </a>
+                <a href="/bot-ea-trading" class="px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors whitespace-nowrap">
+                  Xem Bot EA
+                </a>
+              </div>
+            </div>
+          ) : (
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-950/80 to-slate-900 border border-blue-800/80 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div>
+                <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">CẬP NHẬT 24/7</span>
+                <h3 class="text-lg font-bold text-white mt-1">✈️ Tham Gia Kênh Telegram Để Nhận Tin Sớm Nhất</h3>
+                <p class="text-xs text-slate-400 mt-1">Không bỏ lỡ bất kỳ biến động vĩ mô và cơ hội thị trường nào.</p>
+              </div>
+              <a href="https://t.me/channelmcg" target="_blank" class="px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold text-xs uppercase tracking-wider transition-colors whitespace-nowrap">
+                Vào Kênh Telegram →
+              </a>
+            </div>
+          )}
+        </div>
+
+        <!-- Navigation Back -->
+        <div class="mt-10 flex justify-between items-center text-xs text-slate-400">
+          <a href="/" class="hover:text-emerald-400 transition-colors">← Về trang chủ</a>
+          <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="hover:text-emerald-400 transition-colors">Lên đầu trang ↑</a>
+        </div>
+      </article>
+
+      <!-- CỘT PHẢI: SIDEBAR PHỄU CHUYỂN ĐỔI (lg:col-span-4) -->
+      <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+
+        <!-- BANNER 1: KHO 84 CÔNG CỤ AI & HẠ TẦNG MMO -->
+        <div class="p-6 rounded-3xl bg-gradient-to-br from-emerald-950/70 via-slate-900 to-slate-950 border border-emerald-500/30 shadow-xl relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              ⚡ SẢN PHẨM MMO
+            </span>
+            <span class="text-xs text-emerald-400 font-bold">84+ Tool AI</span>
           </div>
-          <div class="flex gap-2">
-            <a href="/trading-signal-vip" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors whitespace-nowrap">
-              Xem Signal VIP
+
+          <h3 class="text-lg font-extrabold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+            Kho 84 Công Cụ AI & Hạ Tầng MMO 2026
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-5">
+            Proxy IPv4 tĩnh, VPS Windows <10ms, Antidetect GPM-Login & 84 tài khoản AI bản quyền giá sỉ.
+          </p>
+
+          <div class="space-y-2.5">
+            <a
+              href="https://t.me/chatgpsplusbot"
+              target="_blank"
+              class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg"
+            >
+              <i class="fa-solid fa-robot text-sm"></i>
+              <span>MUA NGAY QUA TELEGRAM BOT</span>
             </a>
-            <a href="/bot-ea-trading" class="px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors whitespace-nowrap">
-              Xem Bot EA
+
+            <a
+              href="/kho-ai-ha-tang-mmo"
+              class="w-full py-2 px-4 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs text-center transition-colors block"
+            >
+              Xem Kho Sản Phẩm Website →
             </a>
           </div>
         </div>
-      ) : (
-        <div class="p-6 rounded-2xl bg-gradient-to-r from-blue-950/60 to-slate-900 border border-blue-800/80 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">CẬP NHẬT 24/7</span>
-            <h3 class="text-lg font-bold text-white mt-1">✈️ Tham Gia Kênh Telegram Để Nhận Tin Sớm Nhất</h3>
-            <p class="text-xs text-slate-400 mt-1">Không bỏ lỡ bất kỳ biến động vĩ mô và cơ hội thị trường nào.</p>
-          </div>
-          <a href="https://t.me/channelmcg" target="_blank" class="px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-white font-bold text-xs uppercase tracking-wider transition-colors whitespace-nowrap">
-            Vào Kênh Telegram →
-          </a>
-        </div>
-      )}
-    </div>
 
-    <!-- Navigation Back -->
-    <div class="mt-10 flex justify-between items-center text-xs text-slate-400">
-      <a href="/" class="hover:text-emerald-400">← Về trang chủ</a>
-      <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="hover:text-emerald-400">Lên đầu trang ↑</a>
+        <!-- BANNER 2: BOT EA TRADING MT5 -->
+        <div class="p-6 rounded-3xl bg-gradient-to-br from-cyan-950/70 via-slate-900 to-slate-950 border border-cyan-500/30 shadow-xl relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+              🤖 BOT EA ĐỘC QUYỀN
+            </span>
+            <span class="text-xs text-cyan-400 font-bold">Max DD &lt; 10%</span>
+          </div>
+
+          <h3 class="text-lg font-extrabold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+            Bot EA MT5 No Pain No Gain
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-5">
+            Săn thanh khoản Vàng SMC, 100% Stop Loss cứng, kiểm toán Myfxbook minh bạch. Tặng 1 tuần chạy thử!
+          </p>
+
+          <div class="space-y-2.5">
+            <a
+              href="https://t.me/willrichus"
+              target="_blank"
+              class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg"
+            >
+              <i class="fa-solid fa-gift text-sm"></i>
+              <span>NHẬN BOT CHẠY THỬ (@willrichus)</span>
+            </a>
+
+            <a
+              href="/bot-ea-trading"
+              class="w-full py-2 px-4 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs text-center transition-colors block"
+            >
+              Lịch Sử Myfxbook Thực Tế →
+            </a>
+          </div>
+        </div>
+
+        <!-- BANNER 3: VIP TRADING SIGNALS -->
+        <div class="p-6 rounded-3xl bg-gradient-to-br from-amber-950/70 via-slate-900 to-slate-950 border border-amber-500/30 shadow-xl relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/30">
+              👑 TÍN HIỆU SMC VIP
+            </span>
+            <span class="text-xs text-amber-400 font-bold">Winrate 78.5%</span>
+          </div>
+
+          <h3 class="text-lg font-extrabold text-white mb-2 group-hover:text-amber-300 transition-colors">
+            Kênh Tín Hiệu VIP Vàng & Crypto
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed mb-5">
+            R:R 1:2.8+, kết nối Webhook MT5 Realtime. Miễn phí trọn đời qua sàn đối tác (Bybit, WEEX, PU Prime).
+          </p>
+
+          <div class="space-y-2.5">
+            <a
+              href="/trading-signal-vip#vip-flow"
+              class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg"
+            >
+              <i class="fa-solid fa-crown text-sm"></i>
+              <span>KÍCH HOẠT VIP QUA ĐỐI TÁC</span>
+            </a>
+
+            <a
+              href="https://t.me/channelmcg"
+              target="_blank"
+              class="w-full py-2 px-4 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs text-center transition-colors block"
+            >
+              Vào Telegram Free (@channelmcg) →
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
     </div>
-  </article>
+  </div>
 </Layout>
