@@ -1,7 +1,7 @@
 ---
-title: "Bẫy Thanh Khỉa Vàng XAUUSD: Nhận Diện Smart Money Trap & Kỹ Thuật Đọc Order Block Chuẩn Xác"
+title: "Bẫy Thanh Khoản Vàng XAUUSD: Nhận Diện Smart Money Trap & Kỹ Thuật Đọc Order Block Chuẩn Xác"
 slug: "bay-thanh-khia-vang-xauusd-nhan-dien-smart-money-t"
-category: "Hướng Dẫn Về AI"
+category: "Phân Tích Crypto và Gold"
 date: "2026-11-18"
 summary: "Giải mã cách cá mập quét Stop Loss trên thị trường Vàng và phương pháp giao dịch theo dấu chân dòng tiền lớn với SMC."
 published: true
