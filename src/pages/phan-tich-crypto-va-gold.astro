@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getPublishedArticles } from '../lib/notion.js';
+
+const category = 'Phân Tích Crypto và Gold';
+const articles = await getPublishedArticles(category);
+---
+
+<Layout title="Phân Tích Crypto và Gold | Tin Tức NFT" activeNav="Phân Tích Crypto và Gold" description="Phân tích kỹ thuật Vàng XAUUSD, Bitcoin và Crypto theo phương pháp Smart Money Concept (SMC), Order Block và quét thanh khoản.">
+
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <div class="mb-10 text-center max-w-3xl mx-auto">
+      <span class="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-950/60 border border-amber-800/60 px-3 py-1 rounded-full">Kỹ Thuật Chuyên Sâu</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 mb-3">Phân Tích Crypto và Gold</h1>
+      <p class="text-sm sm:text-base text-slate-400">
+        Đọc hiểu bản đồ thanh khoản của cá mập tài chính: Xác định vùng Order Block then chốt, bẫy giá Inducement và điểm vào lệnh tối ưu.
+      </p>
+    </div>
+
+    <!-- Dual Conversion Box -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      <div class="p-6 bg-gradient-to-r from-amber-950/50 to-slate-900 border border-amber-800/60 rounded-2xl flex items-center justify-between">
+        <div>
+          <span class="text-xs font-bold text-amber-400 uppercase">TÍN HIỆU LIVE</span>
+          <h3 class="text-base font-bold text-white mt-1">Trading Signal VIP Realtime</h3>
+          <p class="text-xs text-slate-400">Xem bảng tín hiệu vào lệnh tự động qua Webhook MT5.</p>
+        </div>
+        <a href="/trading-signal-vip" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold rounded-lg transition-colors whitespace-nowrap">
+          Vào Trang Signal →
+        </a>
+      </div>
+
+      <div class="p-6 bg-gradient-to-r from-cyan-950/50 to-slate-900 border border-cyan-800/60 rounded-2xl flex items-center justify-between">
+        <div>
+          <span class="text-xs font-bold text-cyan-400 uppercase">BOT TỰ ĐỘNG</span>
+          <h3 class="text-base font-bold text-white mt-1">BOT EA Trading Myfxbook</h3>
+          <p class="text-xs text-slate-400">Thống kê lãi thực tế 2 bot No Pain No Gain, tặng 1 tuần chạy thử.</p>
+        </div>
+        <a href="/bot-ea-trading" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-bold rounded-lg transition-colors whitespace-nowrap">
+          Xem Bot EA →
+        </a>
+      </div>
+    </div>
+
+    {articles.length === 0 ? (
+      <div class="text-center py-16 bg-slate-900/50 rounded-2xl border border-slate-800">
+        <p class="text-slate-400">Chưa có bài viết nào trong chuyên mục này. Hãy thêm bài mới trên Notion!</p>
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((art) => (
+          <article class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 hover:border-amber-500/50 transition-all flex flex-col justify-between hover:shadow-xl">
+            <div>
+              <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+                <span class="text-amber-400 font-semibold">{art.category}</span>
+                <span>{art.date}</span>
+              </div>
+              <h2 class="text-lg font-bold text-white hover:text-amber-300 transition-colors mb-3 leading-snug">
+                <a href={`/p/${art.slug}`}>{art.title}</a>
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-400 line-clamp-3 mb-6 leading-relaxed">
+                {art.summary}
+              </p>
+            </div>
+            <a href={`/p/${art.slug}`} class="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1.5">
+              Đọc phân tích kỹ thuật →
+            </a>
+          </article>
+        ))}
+      </div>
+    )}
+  </section>
+
+</Layout>

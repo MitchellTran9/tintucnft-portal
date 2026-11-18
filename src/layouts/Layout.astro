@@ -1,0 +1,184 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  activeNav?: string;
+}
+
+const {
+  title = "Kho Tài Nguyên AI - MMO & Giải Pháp Bot Trading | Tin Tức NFT",
+  description = "Cổng thông tin chuyên sâu về Tin tức AI, Hạ tầng MMO, Tín hiệu Trading SMC và Giải pháp Bot EA tự động hóa.",
+  image = "/banner.jpg",
+  activeNav = "Home"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://tintucnft.com");
+
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "Thị Trường và AI 247", href: "/thi-truong-va-ai-247" },
+  { name: "Hướng Dẫn Về AI", href: "/huong-dan-ve-ai" },
+  { name: "Kho AI & Hạ Tầng MMO", href: "/kho-ai-ha-tang-mmo", isProduct: true },
+  { name: "Phân Tích Crypto và Gold", href: "/phan-tich-crypto-va-gold" },
+  { name: "Trading Signal VIP", href: "/trading-signal-vip", isProduct: true },
+  { name: "BOT EA Trading", href: "/bot-ea-trading", isProduct: true },
+  { name: "About", href: "/about" }
+];
+---
+
+<!doctype html>
+<html lang="vi" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+    <style is:global>
+      body {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: #0b0f17;
+        color: #e2e8f0;
+      }
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0b0f17;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #334155;
+      }
+    </style>
+
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#0b0f17] text-slate-200 antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Top Branding Header -->
+    <header class="border-b border-slate-800 bg-[#0f172a]/80 backdrop-blur-md sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <!-- Top bar: Brand Title & Fast Actions -->
+        <div class="flex items-center justify-between py-3 border-b border-slate-800/60">
+          <a href="/" class="flex items-center space-x-2 text-center mx-auto sm:mx-0">
+            <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2 py-0.5 rounded">TINTUCNFT.COM</span>
+            <h1 class="text-base sm:text-lg font-bold text-white hover:text-emerald-400 transition-colors">
+              Kho Tài Nguyên AI - MMO & Giải Pháp Bot Trading
+            </h1>
+          </a>
+          <div class="hidden sm:flex items-center space-x-4">
+            <a href="https://t.me/smarttradervip" target="_blank" rel="noopener noreferrer" class="text-xs font-medium text-slate-300 hover:text-white bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700 hover:border-emerald-500 transition-all flex items-center gap-1.5">
+              <span>✈️ Telegram Channel</span>
+            </a>
+            <a href="https://t.me/willrich" target="_blank" rel="noopener noreferrer" class="text-xs font-medium text-emerald-400 hover:text-emerald-300 bg-emerald-950/40 px-3 py-1.5 rounded-full border border-emerald-800/80 transition-all">
+              Hỗ Trợ 1-1
+            </a>
+          </div>
+        </div>
+
+        <!-- Main Navigation Bar (Exact Substack structure) -->
+        <nav class="flex items-center justify-between overflow-x-auto py-2 scrollbar-none text-sm font-medium">
+          <div class="flex items-center space-x-1 sm:space-x-2 whitespace-nowrap">
+            {navItems.map((item) => {
+              const isActive = activeNav === item.name;
+              return (
+                <a
+                  href={item.href}
+                  class={`px-3 py-1.5 rounded-lg transition-all text-xs sm:text-sm ${
+                    isActive
+                      ? "text-emerald-400 font-bold bg-slate-800/80 border-b-2 border-emerald-400"
+                      : item.isProduct
+                      ? "text-amber-300 hover:text-amber-200 hover:bg-slate-800/40"
+                      : "text-slate-300 hover:text-white hover:bg-slate-800/40"
+                  }`}
+                >
+                  {item.isProduct && <span class="text-xs mr-1">⚡</span>}
+                  {item.name}
+                </a>
+              );
+            })}
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Slot -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-[#080d14] text-slate-400 py-12 mt-16 text-xs sm:text-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div class="space-y-3">
+            <div class="text-white font-bold text-base">TINTUCNFT.COM</div>
+            <p class="text-slate-400 text-xs leading-relaxed">
+              Hệ sinh thái thông tin tài chính số, phân tích kỹ thuật SMC, hạ tầng MMO tự động hóa và giải pháp Bot EA MT5 chuyên nghiệp.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-3">Chuyên Mục Nội Dung</h4>
+            <ul class="space-y-2 text-xs">
+              <li><a href="/thi-truong-va-ai-247" class="hover:text-emerald-400 transition-colors">Thị Trường và AI 247</a></li>
+              <li><a href="/huong-dan-ve-ai" class="hover:text-emerald-400 transition-colors">Hướng Dẫn Về AI</a></li>
+              <li><a href="/phan-tich-crypto-va-gold" class="hover:text-emerald-400 transition-colors">Phân Tích Crypto và Gold</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-3">Sản Phẩm & Dịch Vụ</h4>
+            <ul class="space-y-2 text-xs">
+              <li><a href="/kho-ai-ha-tang-mmo" class="hover:text-amber-400 transition-colors">Kho AI & Hạ Tầng MMO</a></li>
+              <li><a href="/trading-signal-vip" class="hover:text-amber-400 transition-colors">Trading Signal VIP</a></li>
+              <li><a href="/bot-ea-trading" class="hover:text-amber-400 transition-colors">BOT EA Trading MT5</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold mb-3">Liên Hệ & Cộng Đồng</h4>
+            <p class="text-xs text-slate-400 mb-3">Tham gia kênh Telegram để cập nhật tin tức & tín hiệu realtime.</p>
+            <div class="flex flex-col gap-2">
+              <a href="https://t.me/smarttradervip" target="_blank" class="text-emerald-400 hover:underline">✈️ Telegram Channel</a>
+              <a href="https://t.me/willrich" target="_blank" class="text-emerald-400 hover:underline">💬 Hỗ Trợ Kỹ Thuật (@willrich)</a>
+            </div>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-400">
+          <p>© 2026 TINTUCNFT.COM - All Rights Reserved. Tự động hóa Jamstack với Cloudflare Pages & Notion CMS.</p>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

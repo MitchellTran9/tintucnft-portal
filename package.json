@@ -1,0 +1,19 @@
+{
+  "name": "tintucnft-portal",
+  "version": "1.0.0",
+  "description": "Kho Tài Nguyên AI - MMO & Giải Pháp Bot Trading",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@notionhq/client": "^5.31.1",
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.12",
+    "dotenv": "^18.0.10",
+    "tailwindcss": "^4.3.5"
+  }
+}

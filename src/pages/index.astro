@@ -1,0 +1,199 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getPublishedArticles } from '../lib/notion.js';
+
+const allArticles = await getPublishedArticles();
+
+const newsArticles = allArticles.filter(a => a.category === 'Thị Trường và AI 247').slice(0, 4);
+const guideArticles = allArticles.filter(a => a.category === 'Hướng Dẫn Về AI').slice(0, 4);
+const analysisArticles = allArticles.filter(a => a.category === 'Phân Tích Crypto và Gold').slice(0, 4);
+---
+
+<Layout title="Kho Tài Nguyên AI - MMO & Giải Pháp Bot Trading | Tin Tức NFT" activeNav="Home">
+
+  <!-- HERO SECTION -->
+  <section class="relative overflow-hidden pt-12 pb-16 bg-gradient-to-b from-[#0f172a] via-[#0b0f17] to-[#0b0f17] border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-800/80 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Hệ Sinh Thái Tự Động Hóa 2026
+      </div>
+      
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
+        Kho Tài Nguyên AI - MMO & <br class="hidden sm:block" />
+        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-400 bg-clip-text text-transparent">
+          Giải Pháp Bot Trading Đột Phá
+        </span>
+      </h1>
+
+      <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed mb-10">
+        Nền tảng tri thức tổng hợp: Cập nhật biến động thị trường tài chính 24/7, cung cấp hạ tầng MMO thực chiến và tự động hóa giao dịch với Bot EA MT5 chuẩn quản trị rủi ro.
+      </p>
+
+      <!-- 3 Primary Conversion Hub Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
+        <!-- Card 1: Kho MMO -->
+        <a href="/kho-ai-ha-tang-mmo" class="group relative p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-slate-800 hover:border-emerald-500/80 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-950/40 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+            🛒
+          </div>
+          <div class="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-1">Hạ Tầng Nuôi Acc & MMO</div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">Kho AI & Hạ Tầng MMO</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">Proxy IPv4 tĩnh, VPS chuyên nuôi nick X/TikTok, Antidetect Browser GPM-Login & Gói Skill AI.</p>
+          <div class="flex items-center text-xs font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">
+            Khám phá kho hạ tầng →
+          </div>
+        </a>
+
+        <!-- Card 2: Signal Trading -->
+        <a href="/trading-signal-vip" class="group relative p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-slate-800 hover:border-amber-500/80 transition-all duration-300 hover:shadow-2xl hover:shadow-amber-950/40 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+            🎯
+          </div>
+          <div class="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-1">Tín Hiệu Realtime SMC</div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">Trading Signal VIP</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">Đồng bộ tín hiệu Vàng XAUUSD & Coin chuẩn Order Block, kết nối Webhook MT5 trực tiếp.</p>
+          <div class="flex items-center text-xs font-semibold text-amber-400 group-hover:translate-x-1 transition-transform">
+            Xem bảng tín hiệu sống →
+          </div>
+        </a>
+
+        <!-- Card 3: Bot EA Trading -->
+        <a href="/bot-ea-trading" class="group relative p-6 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-slate-800 hover:border-cyan-500/80 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-950/40 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+            🤖
+          </div>
+          <div class="text-xs font-semibold uppercase tracking-wider text-cyan-400 mb-1">Tự Động Hóa MT5</div>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">BOT EA Trading</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">Lịch sử Myfxbook 2 Bot No Pain No Gain, kiểm soát Max DD dưới 10%, tặng 1 tuần chạy thử.</p>
+          <div class="flex items-center text-xs font-semibold text-cyan-400 group-hover:translate-x-1 transition-transform">
+            Xem lịch sử Myfxbook →
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION 1: Thị Trường và AI 247 -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <div class="flex items-center justify-between mb-8 pb-3 border-b border-slate-800">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Cập Nhật 24/7</span>
+        <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+          <span>📰 Thị Trường và AI 247</span>
+        </h2>
+      </div>
+      <a href="/thi-truong-va-ai-247" class="text-xs sm:text-sm font-semibold text-slate-400 hover:text-emerald-400 transition-colors">
+        Xem tất cả →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {newsArticles.map((art) => (
+        <article class="bg-slate-900/70 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+              <span class="text-blue-400 font-semibold">{art.category}</span>
+              <span>{art.date}</span>
+            </div>
+            <h3 class="text-base font-bold text-white hover:text-emerald-400 transition-colors mb-3 line-clamp-2">
+              <a href={`/p/${art.slug}`}>{art.title}</a>
+            </h3>
+            <p class="text-xs text-slate-400 line-clamp-3 mb-4 leading-relaxed">
+              {art.summary}
+            </p>
+          </div>
+          <a href={`/p/${art.slug}`} class="text-xs font-semibold text-emerald-400 hover:underline inline-flex items-center gap-1">
+            Đọc bài viết →
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION 2: Hướng Dẫn Về AI & MMO -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-12 bg-slate-900/30 rounded-3xl my-6 border border-slate-800/60">
+    <div class="flex items-center justify-between mb-8 pb-3 border-b border-slate-800">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-green-400">Thực Chiến MMO</span>
+        <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+          <span>💡 Hướng Dẫn Về AI & Hạ Tầng MMO</span>
+        </h2>
+      </div>
+      <a href="/huong-dan-ve-ai" class="text-xs sm:text-sm font-semibold text-slate-400 hover:text-emerald-400 transition-colors">
+        Xem tất cả →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {guideArticles.map((art) => (
+        <article class="bg-slate-900/70 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+              <span class="text-green-400 font-semibold">{art.category}</span>
+              <span>{art.date}</span>
+            </div>
+            <h3 class="text-base font-bold text-white hover:text-emerald-400 transition-colors mb-3 line-clamp-2">
+              <a href={`/p/${art.slug}`}>{art.title}</a>
+            </h3>
+            <p class="text-xs text-slate-400 line-clamp-3 mb-4 leading-relaxed">
+              {art.summary}
+            </p>
+          </div>
+          <a href={`/p/${art.slug}`} class="text-xs font-semibold text-emerald-400 hover:underline inline-flex items-center gap-1">
+            Đọc chi tiết →
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <!-- Lead Magnet Banner inside Section -->
+    <div class="mt-8 p-6 bg-gradient-to-r from-emerald-950/60 via-slate-900 to-slate-900 border border-emerald-800/60 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h4 class="text-base font-bold text-white mb-1">🎁 Quà tặng Lead Magnet: Key GPM-Login & Gói Data Skill AI</h4>
+        <p class="text-xs text-slate-400">Trang bị trọn bộ giải pháp nuôi tài khoản không lo checkpoint cho thành viên cộng đồng.</p>
+      </div>
+      <a href="/kho-ai-ha-tang-mmo" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-colors whitespace-nowrap">
+        Nhận quà tại Kho MMO
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTION 3: Phân Tích Crypto & Gold -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+    <div class="flex items-center justify-between mb-8 pb-3 border-b border-slate-800">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Kỹ Thuật SMC</span>
+        <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+          <span>📊 Phân Tích Crypto và Gold</span>
+        </h2>
+      </div>
+      <a href="/phan-tich-crypto-va-gold" class="text-xs sm:text-sm font-semibold text-slate-400 hover:text-emerald-400 transition-colors">
+        Xem tất cả →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {analysisArticles.map((art) => (
+        <article class="bg-slate-900/70 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+              <span class="text-amber-400 font-semibold">{art.category}</span>
+              <span>{art.date}</span>
+            </div>
+            <h3 class="text-base font-bold text-white hover:text-emerald-400 transition-colors mb-3 line-clamp-2">
+              <a href={`/p/${art.slug}`}>{art.title}</a>
+            </h3>
+            <p class="text-xs text-slate-400 line-clamp-3 mb-4 leading-relaxed">
+              {art.summary}
+            </p>
+          </div>
+          <a href={`/p/${art.slug}`} class="text-xs font-semibold text-emerald-400 hover:underline inline-flex items-center gap-1">
+            Đọc phân tích →
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+</Layout>
