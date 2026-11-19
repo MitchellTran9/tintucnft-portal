@@ -65,22 +65,22 @@ html:not(.dark) header nav a.border-b-2.border-emerald-400 {
   border-color: #059669 !important;
 }
 
-/* 2. Page Sections & Gradients */
-html:not(.dark) section,
+/* 2. Page Sections & Gradients (Excluding CTA Buttons & Banner Cards) */
+html:not(.dark) section:not([class*="banner-"]),
 html:not(.dark) main {
   background-color: #f8fafc;
 }
 
-html:not(.dark) section.bg-gradient-to-b,
-html:not(.dark) div.bg-gradient-to-b,
-html:not(.dark) .bg-gradient-to-b:not(.bg-clip-text) {
+html:not(.dark) section.bg-gradient-to-b:not([class*="banner-"]),
+html:not(.dark) div.bg-gradient-to-b:not([class*="banner-"]),
+html:not(.dark) .bg-gradient-to-b:not(.bg-clip-text):not([class*="banner-"]) {
   background-image: none !important;
   background-color: #f8fafc !important;
 }
 
-html:not(.dark) div.bg-gradient-to-r:not(.bg-clip-text),
-html:not(.dark) a.bg-gradient-to-r:not(.bg-clip-text),
-html:not(.dark) section.bg-gradient-to-r:not(.bg-clip-text) {
+/* Do NOT strip background-image from CTA buttons or links! Only plain section backgrounds */
+html:not(.dark) section.bg-gradient-to-r:not(.bg-clip-text):not([class*="banner-"]),
+html:not(.dark) div.bg-gradient-to-r:not(.bg-clip-text):not([class*="banner-"]):not(.banner-card-lead):not(.cta-button) {
   background-image: none !important;
   background-color: #ffffff !important;
 }
@@ -93,45 +93,51 @@ html:not(.dark) .bg-\[\#0d131f\]\/60 {
   background-color: #f8fafc !important;
 }
 
-html:not(.dark) .bg-slate-900\/70,
-html:not(.dark) .bg-slate-900\/80,
-html:not(.dark) .bg-slate-900\/90,
-html:not(.dark) .bg-slate-900\/60,
-html:not(.dark) .bg-slate-900 {
+html:not(.dark) .bg-slate-900\/70:not([class*="banner-"]),
+html:not(.dark) .bg-slate-900\/80:not([class*="banner-"]),
+html:not(.dark) .bg-slate-900\/90:not([class*="banner-"]),
+html:not(.dark) .bg-slate-900\/60:not([class*="banner-"]),
+html:not(.dark) .bg-slate-900:not([class*="banner-"]) {
   background-color: #ffffff !important;
 }
 
-html:not(.dark) .bg-slate-800,
-html:not(.dark) .bg-slate-800\/80,
-html:not(.dark) .bg-slate-800\/70,
-html:not(.dark) .bg-slate-800\/50 {
+html:not(.dark) .bg-slate-800:not([class*="banner-"]):not(a):not(button),
+html:not(.dark) .bg-slate-800\/80:not([class*="banner-"]):not(a):not(button),
+html:not(.dark) .bg-slate-800\/70:not([class*="banner-"]):not(a):not(button),
+html:not(.dark) .bg-slate-800\/50:not([class*="banner-"]):not(a):not(button) {
   background-color: #f1f5f9 !important;
 }
 
-html:not(.dark) .border-slate-800,
-html:not(.dark) .border-slate-800\/80,
-html:not(.dark) .border-slate-800\/60,
-html:not(.dark) .border-slate-700,
-html:not(.dark) .border-slate-700\/80,
-html:not(.dark) .border-slate-700\/60 {
+html:not(.dark) .border-slate-800:not([class*="banner-"]),
+html:not(.dark) .border-slate-800\/80:not([class*="banner-"]),
+html:not(.dark) .border-slate-800\/60:not([class*="banner-"]),
+html:not(.dark) .border-slate-700:not([class*="banner-"]),
+html:not(.dark) .border-slate-700\/80:not([class*="banner-"]),
+html:not(.dark) .border-slate-700\/60:not([class*="banner-"]) {
   border-color: #e2e8f0 !important;
 }
 
-/* 4. Text Contrast */
-html:not(.dark) .text-white {
+/* 4. Text Contrast (Excluding buttons and colorful badges) */
+html:not(.dark) h1.text-white,
+html:not(.dark) h2.text-white,
+html:not(.dark) h3.text-white,
+html:not(.dark) h4.text-white,
+html:not(.dark) p.text-white,
+html:not(.dark) span.text-white:not([class*="banner-cta"]):not([class*="bg-emerald-"]):not([class*="bg-cyan-"]):not([class*="bg-blue-"]) {
   color: #0f172a !important;
 }
-html:not(.dark) .text-slate-100,
-html:not(.dark) .text-slate-200 {
+
+html:not(.dark) .text-slate-100:not([class*="banner-cta"]),
+html:not(.dark) .text-slate-200:not([class*="banner-cta"]) {
   color: #1e293b !important;
 }
-html:not(.dark) .text-slate-300 {
+html:not(.dark) .text-slate-300:not([class*="banner-cta"]) {
   color: #334155 !important;
 }
-html:not(.dark) .text-slate-400 {
+html:not(.dark) .text-slate-400:not([class*="banner-cta"]) {
   color: #64748b !important;
 }
-html:not(.dark) .text-slate-500 {
+html:not(.dark) .text-slate-500:not([class*="banner-cta"]) {
   color: #94a3b8 !important;
 }
 
@@ -169,8 +175,222 @@ html:not(.dark) footer .text-white {
   color: #0f172a !important;
 }
 
-/* 8. Ambient Glow Blurs (reduce intensity in light mode) */
+/* 8. Ambient Glow Blurs */
 html:not(.dark) .blur-\[120px\],
 html:not(.dark) .blur-3xl {
-  opacity: 0.3 !important;
+  opacity: 0.15 !important;
+}
+
+/* ========================================================
+   HIGH-CONVERTING BANNER ADS SYSTEM (LIGHT & DARK THEMES)
+   ======================================================== */
+
+/* --- DARK MODE BANNERS --- */
+.banner-card-emerald {
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.75) 0%, #0f172a 50%, #022c22 100%);
+  border: 2px solid rgba(16, 185, 129, 0.45);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 25px -5px rgba(16, 185, 129, 0.2);
+}
+.banner-card-cyan {
+  background: linear-gradient(135deg, rgba(8, 51, 68, 0.75) 0%, #0f172a 50%, #082f49 100%);
+  border: 2px solid rgba(6, 182, 212, 0.45);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 25px -5px rgba(6, 182, 212, 0.2);
+}
+.banner-card-amber {
+  background: linear-gradient(135deg, rgba(69, 26, 3, 0.75) 0%, #0f172a 50%, #451a03 100%);
+  border: 2px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 25px -5px rgba(245, 158, 11, 0.2);
+}
+.banner-card-lead {
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.7) 0%, #0f172a 50%, rgba(19, 78, 74, 0.7) 100%);
+  border: 2px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.4);
+}
+
+.banner-badge-emerald {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+.banner-badge-cyan {
+  background: rgba(6, 182, 212, 0.2);
+  color: #67e8f9;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+}
+.banner-badge-amber {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.banner-title {
+  color: #ffffff;
+}
+.banner-desc {
+  color: #cbd5e1;
+}
+.banner-meta-box {
+  background: rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+}
+.banner-meta-box-label {
+  color: #94a3b8;
+}
+.banner-meta-box-val {
+  color: #f8fafc;
+}
+
+.banner-cta-primary-emerald {
+  background: linear-gradient(to right, #10b981, #14b8a6) !important;
+  color: #022c22 !important;
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4) !important;
+}
+.banner-cta-primary-emerald:hover {
+  background: linear-gradient(to right, #34d399, #2dd4bf) !important;
+}
+
+.banner-cta-primary-cyan {
+  background: linear-gradient(to right, #06b6d4, #3b82f6) !important;
+  color: #022c22 !important;
+  box-shadow: 0 10px 15px -3px rgba(6, 182, 212, 0.4) !important;
+}
+.banner-cta-primary-cyan:hover {
+  background: linear-gradient(to right, #22d3ee, #60a5fa) !important;
+}
+
+.banner-cta-primary-amber {
+  background: linear-gradient(to right, #f59e0b, #eab308) !important;
+  color: #0f172a !important;
+  box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4) !important;
+}
+.banner-cta-primary-amber:hover {
+  background: linear-gradient(to right, #fbbf24, #facc15) !important;
+}
+
+.banner-cta-secondary {
+  background: rgba(30, 41, 59, 0.85);
+  color: #e2e8f0;
+  border: 1px solid #334155;
+}
+.banner-cta-secondary:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+/* --- LIGHT MODE BANNERS (SUPER HIGH CONTRAST & CLICK-WORTHY) --- */
+html:not(.dark) .banner-card-emerald {
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 50%, #f0fdf4 100%) !important;
+  border: 2px solid #10b981 !important;
+  box-shadow: 0 12px 30px -5px rgba(16, 185, 129, 0.18), 0 4px 6px -2px rgba(16, 185, 129, 0.1) !important;
+}
+html:not(.dark) .banner-card-cyan {
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 50%, #ecfeff 100%) !important;
+  border: 2px solid #0ea5e9 !important;
+  box-shadow: 0 12px 30px -5px rgba(14, 165, 233, 0.18), 0 4px 6px -2px rgba(14, 165, 233, 0.1) !important;
+}
+html:not(.dark) .banner-card-amber {
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #fefce8 100%) !important;
+  border: 2px solid #f59e0b !important;
+  box-shadow: 0 12px 30px -5px rgba(245, 158, 11, 0.18), 0 4px 6px -2px rgba(245, 158, 11, 0.1) !important;
+}
+html:not(.dark) .banner-card-lead {
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 60%, #f0fdf4 100%) !important;
+  border: 2px solid #10b981 !important;
+  box-shadow: 0 12px 25px -5px rgba(16, 185, 129, 0.15) !important;
+}
+
+html:not(.dark) .banner-badge-emerald {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+  border: 1.5px solid #6ee7b7 !important;
+  font-weight: 800 !important;
+}
+html:not(.dark) .banner-badge-cyan {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+  border: 1.5px solid #7dd3fc !important;
+  font-weight: 800 !important;
+}
+html:not(.dark) .banner-badge-amber {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1.5px solid #fcd34d !important;
+  font-weight: 800 !important;
+}
+
+html:not(.dark) .banner-title {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+html:not(.dark) .banner-desc {
+  color: #334155 !important;
+  font-weight: 500 !important;
+}
+
+html:not(.dark) .banner-meta-box {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+}
+html:not(.dark) .banner-meta-box-label {
+  color: #64748b !important;
+}
+html:not(.dark) .banner-meta-box-val {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+html:not(.dark) .banner-cta-primary-emerald {
+  background: linear-gradient(135deg, #059669 0%, #0d9488 100%) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 10px 20px -3px rgba(5, 150, 105, 0.4) !important;
+}
+html:not(.dark) .banner-cta-primary-emerald:hover {
+  background: linear-gradient(135deg, #047857 0%, #0f766e 100%) !important;
+  color: #ffffff !important;
+}
+
+html:not(.dark) .banner-cta-primary-cyan {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 10px 20px -3px rgba(2, 132, 199, 0.4) !important;
+}
+html:not(.dark) .banner-cta-primary-cyan:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%) !important;
+  color: #ffffff !important;
+}
+
+html:not(.dark) .banner-cta-primary-amber {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 10px 20px -3px rgba(245, 158, 11, 0.4) !important;
+}
+html:not(.dark) .banner-cta-primary-amber:hover {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
+  color: #ffffff !important;
+}
+
+html:not(.dark) .banner-cta-secondary {
+  background: #ffffff !important;
+  color: #1e293b !important;
+  border: 1.5px solid #cbd5e1 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+}
+html:not(.dark) .banner-cta-secondary:hover {
+  background: #f8fafc !important;
+  border-color: #059669 !important;
+  color: #059669 !important;
+}
+
+/* Feature bullets & micro copy in light mode */
+html:not(.dark) .banner-bullet {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+html:not(.dark) .banner-micro {
+  color: #64748b !important;
 }
