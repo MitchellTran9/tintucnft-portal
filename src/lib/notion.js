@@ -11,12 +11,16 @@ const NOTION_HEADERS = {
   'Content-Type': 'application/json'
 };
 
-// Fallback topic images (16:9 high resolution)
-const CATEGORY_FALLBACK_IMAGES = {
-  'Thị Trường và AI 247': 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
-  'Hướng Dẫn Về AI': 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-  'Phân Tích Crypto và Gold': 'https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1200&q=80',
-  'default': 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80'
+// Curated high-resolution 16:9 topic images
+const CURATED_TOPIC_IMAGES = {
+  gold: 'https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=1200&q=80', // Thỏi vàng nguyên chất XAUUSD
+  hardware: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80', // Tủ rack server IT & hạ tầng mạng
+  coding: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80', // Màn hình code IDE lập trình
+  aivideo: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80', // Sáng tạo hình ảnh & video AI
+  market: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80', // Bàn làm việc đa màn hình thị trường tài chính
+  chart: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80', // Biểu đồ nến kỹ thuật SMC
+  crypto: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80', // Công nghệ bán dẫn crypto
+  default: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80'
 };
 
 function extractFeaturedImage(props, page) {
@@ -27,11 +31,50 @@ function extractFeaturedImage(props, page) {
   if (!img && page.cover) {
     img = page.cover.external?.url || page.cover.file?.url || null;
   }
-  if (!img) {
-    const cat = props.Category?.select?.name || 'default';
-    img = CATEGORY_FALLBACK_IMAGES[cat] || CATEGORY_FALLBACK_IMAGES['default'];
+
+  const title = (props.Title?.title?.[0]?.plain_text || props.Name?.title?.[0]?.plain_text || '').toLowerCase();
+  const summary = (props.Summary?.rich_text?.[0]?.plain_text || '').toLowerCase();
+  const text = `${title} ${summary}`;
+
+  // Kiểm tra override thông minh: tuyệt đối không để bài Vàng/Gold dùng hình Bitcoin
+  if (text.includes('vàng') || text.includes('gold') || text.includes('xau')) {
+    if (!img || img.includes('photo-1621416894569')) {
+      return CURATED_TOPIC_IMAGES.gold;
+    }
   }
-  return img;
+
+  // Nếu là bài hạ tầng / VPS / Server / Hardware mà chưa có ảnh chuẩn phần cứng
+  if (text.includes('vps') || text.includes('hạ tầng') || text.includes('proxy') || 
+      text.includes('server') || text.includes('hardware') || text.includes('phần cứng') ||
+      text.includes('latency') || text.includes('ping') || text.includes('asic')) {
+    if (!img || img.includes('photo-1611974789855') || img.includes('photo-1621416894569')) {
+      return CURATED_TOPIC_IMAGES.hardware;
+    }
+  }
+
+  // Nếu bài về Cursor, Replit, Code
+  if (text.includes('cursor') || text.includes('replit') || text.includes('code') || text.includes('lập trình')) {
+    if (!img || img.includes('photo-1558494949')) {
+      return CURATED_TOPIC_IMAGES.coding;
+    }
+  }
+
+  // Nếu bài về Runway, Kling, Video AI
+  if (text.includes('runway') || text.includes('kling') || text.includes('video') || text.includes('hoạt họa')) {
+    if (!img || img.includes('photo-1558494949')) {
+      return CURATED_TOPIC_IMAGES.aivideo;
+    }
+  }
+
+  if (img) return img;
+
+  // Fallback theo Category
+  const cat = (props.Category?.select?.name || '').toLowerCase();
+  if (cat.includes('thị trường')) return CURATED_TOPIC_IMAGES.market;
+  if (cat.includes('hướng dẫn')) return CURATED_TOPIC_IMAGES.aivideo;
+  if (cat.includes('phân tích')) return CURATED_TOPIC_IMAGES.gold;
+
+  return CURATED_TOPIC_IMAGES.default;
 }
 
 export function isMetadataBlock(block) {
