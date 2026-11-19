@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -24,12 +26,30 @@ const CURATED_TOPIC_IMAGES = {
 };
 
 function extractFeaturedImage(props, page) {
+  const slug = (props.Slug?.rich_text?.[0]?.plain_text || page?.id || '').trim();
+
+  // 1. ƯU TIÊN HÀNG ĐẦU: Ảnh render riêng biệt theo tiêu đề bài viết
+  if (slug) {
+    try {
+      const localImagePath = path.join(process.cwd(), 'public', 'images', 'articles', `${slug}.jpg`);
+      if (fs.existsSync(localImagePath)) {
+        return `/images/articles/${slug}.jpg`;
+      }
+    } catch (e) {
+      // Bỏ qua lỗi fs nếu có
+    }
+  }
+
   let img = props.FeaturedImage?.url || null;
   if (!img && props.FeaturedImage?.files?.[0]) {
     img = props.FeaturedImage.files[0].file?.url || props.FeaturedImage.files[0].external?.url || null;
   }
   if (!img && page.cover) {
     img = page.cover.external?.url || page.cover.file?.url || null;
+  }
+
+  if (img && img.startsWith('/images/articles/')) {
+    return img;
   }
 
   const title = (props.Title?.title?.[0]?.plain_text || props.Name?.title?.[0]?.plain_text || '').toLowerCase();
