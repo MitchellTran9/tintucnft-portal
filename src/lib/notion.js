@@ -35,6 +35,10 @@ function extractFeaturedImage(props, page) {
       if (fs.existsSync(localImagePath)) {
         return `/images/articles/${slug}.jpg`;
       }
+      const localFolderCover = path.join(process.cwd(), 'public', 'images', 'articles', slug, 'cover.jpg');
+      if (fs.existsSync(localFolderCover)) {
+        return `/images/articles/${slug}/cover.jpg`;
+      }
     } catch (e) {
       // Bỏ qua lỗi fs nếu có
     }
@@ -48,8 +52,23 @@ function extractFeaturedImage(props, page) {
     img = page.cover.external?.url || page.cover.file?.url || null;
   }
 
-  if (img && img.startsWith('/images/articles/')) {
-    return img;
+  if (img) {
+    if (img.startsWith('/images/articles/')) {
+      return img;
+    }
+    if (img.includes('/images/articles/')) {
+      const match = img.match(/\/images\/articles\/.+$/);
+      if (match) {
+        const relPath = match[0];
+        const localCheck = path.join(process.cwd(), 'public', relPath.replace(/^\//, ''));
+        if (fs.existsSync(localCheck)) {
+          return relPath;
+        }
+      }
+    }
+    if (img.includes('raw.githubusercontent.com')) {
+      return img;
+    }
   }
 
   const title = (props.Title?.title?.[0]?.plain_text || props.Name?.title?.[0]?.plain_text || '').toLowerCase();
