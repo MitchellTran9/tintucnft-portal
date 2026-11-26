@@ -9,8 +9,8 @@ published: true
 
 ## Toàn Cảnh Vĩ Mô & Công Nghệ 24h
 
-![Toàn Cảnh Vĩ Mô & Công Nghệ 24h](https://raw.githubusercontent.com/MitchellTran9/tintucnft-portal/main/public/images/articles/anthropic-chao-san-ipo-42-bang-m-chan-vu-mua-ban-d/section_1.jpg)
-*Ảnh tư liệu: As Anthropic IPOs, Grand Theft Auto VI proves why efficiency isn’t a virtue (Nguồn: TechCrunch AI)*
+![Toàn Cảnh Vĩ Mô & Công Nghệ 24h](https://raw.githubusercontent.com/MitchellTran9/tintucnft-portal/main/public/images/articles/anthropic-chao-san-ipo-42-bang-m-chan-vu-mua-ban-d/section_1.jpg?v=11728)
+*Bức tranh đối lập giữa làn sóng IPO của các siêu kỳ lân AI và gọng kìm pháp lý bảo vệ dữ liệu người dùng tại Mỹ.*
 
 
 Thị trường tài chính và công nghệ toàn cầu trong 24 giờ qua đang chứng kiến những bước ngoặt lịch sử khi ranh giới giữa giá trị vốn hóa công nghệ lớn và tính nhân bản của dữ liệu bị thử thách gay gắt. **[TechCrunch AI]** ghi nhận sự kiện chấn động khi **Anthropic chính thức bước chân vào thị trường đại chúng (IPO)**, mở ra một kỷ nguyên mới cho dòng vốn thể chế rót vào các mô hình ngôn ngữ lớn hàng đầu. Song song với đó, áp lực pháp lý từ các cơ quan quản lý nhà nước cũng gia tăng chưa từng có, tiêu biểu là việc **[The Verge AI] tổng hợp 42 tổng chưởng lý các bang Mỹ đang hợp lực ngăn chặn Character.AI bán dữ liệu trò chuyện của người dùng** trong tiến trình phá sản Chapter 11. Sự đối lập này phản ánh bức tranh vĩ mô đầy biến động: một mặt là dòng tiền khổng lồ khao khát hiệu suất và tốc độ từ AI, mặt khác là hàng rào pháp lý khắt khe nhằm bảo vệ quyền riêng tư cá nhân.
@@ -35,7 +35,7 @@ Sự bùng nổ của AI đi kèm với những thách thức pháp lý chưa t�
 
 ## Bảng Tổng Hợp Tác Động & Tín Hiệu Đáng Chú Ý 24h
 
-![Bảng Tổng Hợp Tác Động & Tín Hiệu Đáng Chú Ý 24h](https://raw.githubusercontent.com/MitchellTran9/tintucnft-portal/main/public/images/articles/anthropic-chao-san-ipo-42-bang-m-chan-vu-mua-ban-d/section_2.jpg)
+![Bảng Tổng Hợp Tác Động & Tín Hiệu Đáng Chú Ý 24h](https://raw.githubusercontent.com/MitchellTran9/tintucnft-portal/main/public/images/articles/anthropic-chao-san-ipo-42-bang-m-chan-vu-mua-ban-d/section_2.jpg?v=11728)
 *Tổng hợp trực quan: Bảng Tổng Hợp Tác Động & Tín Hiệu Đáng Chú Ý 24h*
 
 
