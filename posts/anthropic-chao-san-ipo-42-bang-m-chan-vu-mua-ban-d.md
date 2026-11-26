@@ -43,7 +43,7 @@ Sự bùng nổ của AI đi kèm với những thách thức pháp lý chưa t�
 | :--- | :--- | :--- | :--- |
 | **Anthropic IPO lên sàn đại chúng** | Tài chính / AI | Rất cao | Theo dõi dòng vốn tổ chức và xu hướng định giá cổ phiếu AI công nghệ cao |
 | **42 Bang Mỹ chặn bán dữ liệu Character.AI** | Pháp lý / Dữ liệu | Cao | Thận trọng với các tài sản AI có rủi ro pháp lý về quyền riêng tư người dùng |
-| **AMD llama.cpp benchmark dashboard** | Hạ tầng phần cứng | Trung bình | Tối ưu hóa chi phí phần cứng边缘计算 với giải pháp phần cứng AMD Ryzen/Radeon |
+| **AMD llama.cpp benchmark dashboard** | Hạ tầng phần cứng | Trung bình | Tối ưu hóa chi phí phần cứngtính toán biên  với giải pháp phần cứng AMD Ryzen/Radeon |
 | **NVIDIA Nemotron 3.5 Parse ra mắt** | Mô hình ngôn ngữ | Cao | Nâng cấp khả năng xử lý tài liệu và tinh chỉnh mô hình cho doanh nghiệp |
 | **Hệ sinh thái Multi-Agent Swarms** | Kiến trúc AI | Trung bình | Nghiên cứu ứng dụng mạng lưới đa tác nhân vào tự động hóa quy trình nghiệp vụ |
 
